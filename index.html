@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Expo Courir MTL / MTL Running Expo — Avril 2027</title>
+<title>Expo Courir MTL / MTL Run Expo — Avril 2027</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:ital,wght@0,700;1,700;1,900&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -58,7 +58,7 @@
   .hero-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(72px, 13vw, 150px); line-height: 0.88; color: var(--beige); text-transform: uppercase; opacity:0; transform:translateY(40px); transition: all 1s ease 0.4s; }
   .hero-title.vis { opacity:1; transform:translateY(0); }
   .hero-title .accent { color: var(--green); }
-  .hero-title .outline { -webkit-text-stroke: 2px var(--beige); color: transparent; }
+  .hero-title .outline { -webkit-text-stroke: 3px #ffffff; color: transparent; filter: drop-shadow(0 0 1px #fff); }
   .hero-handwrite-hero { font-family: 'Caveat', cursive; font-size: 22px; color: rgba(184,224,74,0.6); display: block; margin-top: 8px; font-style: normal; -webkit-text-stroke: 0; letter-spacing: 1px; }
   .hero-meta { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; opacity:0; transform:translateY(20px); transition: all 0.8s ease 0.7s; }
   .hero-meta.vis { opacity:1; transform:translateY(0); }
@@ -277,13 +277,13 @@
 <div class="ticker-wrap">
   <div class="ticker">
     <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
-    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUNNING EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
     <span class="ticker-item" data-fr="ROUTE · SENTIER · ENDURANCE" data-en="ROAD · TRAIL · ENDURANCE">ROUTE · SENTIER · ENDURANCE</span>
     <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
     <span class="ticker-item" data-fr="50+ MARQUES" data-en="50+ BRANDS">50+ MARQUES</span>
     <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
     <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
-    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUNNING EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
     <span class="ticker-item" data-fr="ROUTE · SENTIER · ENDURANCE" data-en="ROAD · TRAIL · ENDURANCE">ROUTE · SENTIER · ENDURANCE</span>
     <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
     <span class="ticker-item" data-fr="50+ MARQUES" data-en="50+ BRANDS">50+ MARQUES</span>
@@ -321,14 +321,14 @@
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-circle"></div>
-  <div class="hero-handwrite-1" data-fr="on court ensemble." data-en="we run together.">on court ensemble.</div>
-  <div class="hero-handwrite-2" data-fr="avril 2027 — mtl" data-en="april 2027 — mtl">avril 2027 — mtl</div>
+  <div class="hero-handwrite-1" data-fr="on court ensemble." data-en="We run together.">on court ensemble.</div>
+  <div class="hero-handwrite-2" data-fr="avril 2027 — mtl" data-en="April 2027 — MTL">avril 2027 — mtl</div>
   <div class="hero-content">
-    <div class="hero-eyebrow" id="eyebrow" data-fr="MONTRÉAL — PREMIER EXPO COURSE À PIED" data-en="MONTREAL — MTL RUNNING EXPO">MONTRÉAL — PREMIER EXPO COURSE À PIED</div>
+    <div class="hero-eyebrow" id="eyebrow" data-fr="MONTRÉAL — PREMIER EXPO COURSE À PIED" data-en="MONTREAL — MTL RUN EXPO">MONTRÉAL — PREMIER EXPO COURSE À PIED</div>
     <div class="hero-title" id="heroTitle">
-      EXPO<br>
-      <span class="accent">COURIR</span><br>
-      <span class="outline">MTL</span>
+      <span data-fr="EXPO" data-en="MTL">EXPO</span><br>
+      <span class="accent" data-fr="COURIR" data-en="RUN">COURIR</span><br>
+      <span class="outline" data-fr="MTL" data-en="EXPO">MTL</span>
       <span class="hero-handwrite-hero" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</span>
     </div>
     <div class="hero-meta" id="heroMeta">
@@ -367,11 +367,11 @@
       <div class="ticket-title" data-fr="BILLET 2 JOURS — ACCÈS COMPLET" data-en="2-DAY PASS — FULL ACCESS">BILLET 2 JOURS — ACCÈS COMPLET</div>
       <div class="ticket-detail" data-fr="Accès aux deux jours d'exposition, conférences, ateliers et course communautaire." data-en="Access to both expo days, talks, workshops and community run.">Accès aux deux jours d'exposition, conférences, ateliers et course communautaire.</div>
       <div class="ticket-includes">
-        <span class="ticket-tag" data-fr="EXPO FLOOR" data-en="EXPO FLOOR">EXPO FLOOR</span>
+        <span class="ticket-tag" data-fr="ACCÈS EXPO" data-en="EXPO FLOOR">ACCÈS EXPO</span>
         <span class="ticket-tag" data-fr="CONFÉRENCES" data-en="TALKS">CONFÉRENCES</span>
         <span class="ticket-tag" data-fr="ATELIERS" data-en="WORKSHOPS">ATELIERS</span>
         <span class="ticket-tag" data-fr="COURSE COMM." data-en="COMM. RUN">COURSE COMM.</span>
-        <span class="ticket-tag" data-fr="ZONE FOOD" data-en="FOOD ZONE">ZONE FOOD</span>
+        <span class="ticket-tag" data-fr="ZONE BOUFFE" data-en="FOOD ZONE">ZONE BOUFFE</span>
       </div>
     </div>
   </div>
@@ -396,7 +396,7 @@
   <div class="split-content">
     <div class="section-tag-light fi" data-fr="À PROPOS DE L'ÉVÉNEMENT" data-en="ABOUT THE EVENT">À PROPOS DE L'ÉVÉNEMENT</div>
     <div class="split-title fi2" data-fr="Fait pour les coureurs de Montréal." data-en="Built for Montreal runners.">Fait pour les coureurs de Montréal.</div>
-    <div class="split-body fi3" data-fr="Le premier expo entièrement dédié à la course à pied à Montréal — accueillant les coureurs sur route, en sentier, d'endurance et de plein air. Découvrez de nouvelles marques, connectez-vous avec la communauté, apprenez des meilleurs." data-en="Montreal's first expo entirely dedicated to running — welcoming road, trail, endurance, and outdoor runners. Discover new brands, connect with the community, learn from the best.">Le premier expo entièrement dédié à la course à pied à Montréal — accueillant les coureurs sur route, en sentier, d'endurance et de plein air. Découvrez de nouvelles marques, connectez-vous avec la communauté, apprenez des meilleurs.</div>
+    <div class="split-body fi3" data-fr="La première expo entièrement dédié à la course à pied à Montréal — accueillant les coureurs sur route, en sentier, d'endurance et de plein air. Découvrez de nouvelles marques, connectez-vous avec la communauté, apprenez des meilleures." data-en="Montreal's first expo entirely dedicated to running — welcoming road, trail, endurance, and outdoor runners. Discover new brands, connect with the community, learn from the best.">La première expo entièrement dédié à la course à pied à Montréal — accueillant les coureurs sur route, en sentier, d'endurance et de plein air. Découvrez de nouvelles marques, connectez-vous avec la communauté, apprenez des meilleures.</div>
     <div class="btn-group fi">
       <a href="#equipe" class="pill" data-fr="QUI SOMMES-NOUS ↗" data-en="WHO WE ARE ↗">QUI SOMMES-NOUS ↗</a>
       <a href="#inscription" class="pill pill-outline" data-fr="INFOLETTRE" data-en="NEWSLETTER">INFOLETTRE</a>
@@ -409,7 +409,7 @@
   <div class="zones-header">
     <div class="section-tag fi" data-fr="CE QU'ON OFFRE" data-en="WHAT WE OFFER">CE QU'ON OFFRE</div>
     <div class="section-title fi" data-fr="Les zones de l'expo." data-en="Expo zones.">Les zones de l'expo.</div>
-    <span class="zones-handwrite fi" data-fr="tout sous un même toit!" data-en="all under one roof!">tout sous un même toit!</span>
+    <span class="zones-handwrite fi" data-fr="tout sous un même toit!" data-en="All under one roof!">tout sous un même toit!</span>
   </div>
   <div class="zones-grid">
     <div class="zone-card fi"><div class="zone-num">01</div><div class="zone-title" data-fr="Vêtements & Chaussures" data-en="Apparel & Shoes">Vêtements & Chaussures</div><div class="zone-text" data-fr="Les meilleures marques de vêtements et chaussures de course, des grandes aux locales." data-en="The best running apparel and shoe brands, from global to local.">Les meilleures marques de vêtements et chaussures de course, des grandes aux locales.</div></div>
@@ -417,7 +417,7 @@
     <div class="zone-card fi"><div class="zone-num">03</div><div class="zone-title" data-fr="Nutrition" data-en="Nutrition">Nutrition</div><div class="zone-text" data-fr="Gels, boissons, barres et compléments alimentaires pour coureurs de tous niveaux." data-en="Gels, drinks, bars and supplements for runners of all levels.">Gels, boissons, barres et compléments alimentaires pour coureurs de tous niveaux.</div></div>
     <div class="zone-card fi"><div class="zone-num">04</div><div class="zone-title" data-fr="Récupération" data-en="Recovery">Récupération</div><div class="zone-text" data-fr="Rouleaux de massage, thérapies et tout pour récupérer plus vite." data-en="Foam rollers, therapies and everything for faster recovery.">Rouleaux de massage, thérapies et tout pour récupérer plus vite.</div></div>
     <div class="zone-card fi"><div class="zone-num">05</div><div class="zone-title" data-fr="Piste de Course" data-en="Running Track">Piste de Course</div><div class="zone-text" data-fr="Testez les chaussures en conditions réelles sur notre piste intérieure aménagée." data-en="Test shoes in real conditions on our specially set-up indoor track.">Testez les chaussures en conditions réelles sur notre piste intérieure aménagée.</div></div>
-    <div class="zone-card fi"><div class="zone-num">06</div><div class="zone-title" data-fr="Run Clubs" data-en="Run Clubs">Run Clubs</div><div class="zone-text" data-fr="Découvrez les clubs de course de Montréal, rejoignez une communauté." data-en="Discover Montreal's run clubs, join a community.">Découvrez les clubs de course de Montréal, rejoignez une communauté.</div></div>
+    <div class="zone-card fi"><div class="zone-num">06</div><div class="zone-title" data-fr="Run Clubs" data-en="Run Clubs">Run Clubs</div><div class="zone-text" data-fr="Découvrez les clubs de course de Montréal, rejoignez une communauté." data-en="Discover Montreal's run clubs and join a community.">Découvrez les clubs de course de Montréal, rejoignez une communauté.</div></div>
     <div class="zone-card fi"><div class="zone-num">07</div><div class="zone-title" data-fr="Conférences" data-en="Speaker Stage">Conférences</div><div class="zone-text" data-fr="Scène principale avec conférenciers invités, entraîneurs et athlètes d'élite." data-en="Main stage with guest speakers, coaches and elite athletes.">Scène principale avec conférenciers invités, entraîneurs et athlètes d'élite.</div></div>
     <div class="zone-card fi"><div class="zone-num">08</div><div class="zone-title" data-fr="Bouffe & Social" data-en="Food & Social">Bouffe & Social</div><div class="zone-text" data-fr="Zone restauration et espace social pour se retrouver et célébrer la course." data-en="Food zone and social space to meet and celebrate running.">Zone restauration et espace social pour se retrouver et célébrer la course.</div></div>
   </div>
@@ -448,7 +448,7 @@
   <div class="agenda-header">
     <div class="section-tag fi" data-fr="HORAIRE DE L'ÉVÉNEMENT" data-en="EVENT SCHEDULE">HORAIRE DE L'ÉVÉNEMENT</div>
     <div class="section-title fi" data-fr="Programme." data-en="Schedule.">Programme.</div>
-    <span class="agenda-handwrite fi" data-fr="deux jours pour tout explorer!" data-en="two days to explore everything!">deux jours pour tout explorer!</span>
+    <span class="agenda-handwrite fi" data-fr="deux jours pour tout explorer!" data-en="Two days to explore everything!">deux jours pour tout explorer!</span>
   </div>
   <div class="day fi">
     <div class="day-time" data-fr="JOUR 01<br>09h–18h" data-en="DAY 01<br>09AM–6PM">JOUR 01<br>09h–18h</div>
@@ -460,7 +460,7 @@
   </div>
   <div class="day fi">
     <div class="day-time" data-fr="JOUR 02<br>09h–18h" data-en="DAY 02<br>09AM–6PM">JOUR 02<br>09h–18h</div>
-    <div><div class="day-badge" data-fr="SENTIER & ENDURANCE" data-en="TRAIL & ENDURANCE">SENTIER & ENDURANCE</div><div class="day-title" data-fr="Journée Sentier & Endurance" data-en="Trail & Endurance Day">Journée Sentier & Endurance</div><div class="day-sub" data-fr="Focus sur le trail, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées." data-en="Focus on trail, ultramarathon and outdoors. Technical workshops, demos and guided runs.">Focus sur le trail, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées.</div></div>
+    <div><div class="day-badge" data-fr="SENTIER & ENDURANCE" data-en="TRAIL & ENDURANCE">SENTIER & ENDURANCE</div><div class="day-title" data-fr="Journée Sentier & Endurance" data-en="Trail & Endurance Day">Journée Sentier & Endurance</div><div class="day-sub" data-fr="Accent sur le sentier, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées." data-en="Focus on trail, ultramarathon and outdoors. Technical workshops, demos and guided runs.">Accent sur le sentier, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées.</div></div>
   </div>
   <div class="day fi">
     <div class="day-time" data-fr="JOUR 02<br>16h–18h" data-en="DAY 02<br>4PM–6PM">JOUR 02<br>16h–18h</div>
@@ -473,8 +473,8 @@
   <div class="who-inner">
     <div class="who-left">
       <div class="section-tag-light fi" data-fr="L'ÉQUIPE DERRIÈRE L'EXPO" data-en="THE TEAM BEHIND THE EXPO">L'ÉQUIPE DERRIÈRE L'EXPO</div>
-      <div class="who-title fi" data-fr="Qui sommes-nous ?" data-en="Who are we?">Qui sommes-nous ?</div>
-      <div class="who-body fi" data-fr="Expo Courir MTL est porté par trois passionnés unis par le sport, la communauté et la gestion d'événements. Notre ambition : créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied." data-en="MTL Running Expo is led by three passionate individuals united by sport, community, and event management. Our ambition: to create Montreal's first major gathering entirely dedicated to running.">Expo Courir MTL est porté par trois passionnés unis par le sport, la communauté et la gestion d'événements. Notre ambition : créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied.</div>
+      <div class="who-title fi" data-fr="Qui sommes-nous ?" data-en="Who We Are">Qui sommes-nous ?</div>
+      <div class="who-body fi" data-fr="Expo Courir MTL est porté par trois passionnés unis par le sport, la communauté et la gestion d'événements. Notre ambition : créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied." data-en="MTL Run Expo is led by three passionate individuals united by sport, community, and event management. Our ambition: to create Montreal's first major gathering entirely dedicated to running.">Expo Courir MTL est porté par trois passionnés unis par le sport, la communauté et la gestion d'événements. Notre ambition : créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied.</div>
       <div class="team fi">
         <div class="team-member"><div class="team-name">Camille</div><div class="team-role" data-fr="Vision de l'événement + Communauté + Image de marque" data-en="Event Vision + Community + Branding">Vision de l'événement + Communauté + Image de marque</div></div>
         <div class="team-member"><div class="team-name">Geoffroy</div><div class="team-role" data-fr="Partenariats + Culture de la course + Finances" data-en="Partnerships + Running Culture + Finance">Partenariats + Culture de la course + Finances</div></div>
@@ -485,7 +485,7 @@
       <div class="who-logo-bg">ECM</div>
       <div class="who-quote">
         <div class="who-quote-text" data-fr='"On court ensemble.<br>On grandit ensemble."' data-en='"We run together.<br>We grow together."'>"On court ensemble.<br>On grandit ensemble."</div>
-        <div class="who-quote-sub" data-fr="— L'ÉQUIPE EXPO COURIR MTL" data-en="— THE MTL RUNNING EXPO TEAM">— L'ÉQUIPE EXPO COURIR MTL</div>
+        <div class="who-quote-sub" data-fr="— L'ÉQUIPE EXPO COURIR MTL" data-en="— THE MTL RUN EXPO TEAM">— L'ÉQUIPE EXPO COURIR MTL</div>
       </div>
     </div>
   </div>
@@ -528,7 +528,7 @@
 <footer class="footer">
   <div class="footer-top">
     <div>
-      <div class="footer-logo" data-fr="Expo Courir MTL" data-en="MTL Running Expo">Expo Courir MTL</div>
+      <div class="footer-logo" data-fr="Expo Courir MTL" data-en="MTL Run Expo">Expo Courir MTL</div>
       <div class="footer-tagline" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</div>
     </div>
     <div>
@@ -551,7 +551,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy" data-fr="© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS." data-en="© 2027 MTL RUNNING EXPO. ALL RIGHTS RESERVED.">© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS.</div>
+    <div class="footer-copy" data-fr="© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS." data-en="© 2027 MTL RUN EXPO. ALL RIGHTS RESERVED.">© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS.</div>
     <div class="footer-copy">MONTRÉAL, QUÉBEC, CANADA</div>
   </div>
 </footer>
