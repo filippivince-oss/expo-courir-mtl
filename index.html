@@ -515,13 +515,13 @@
     <div class="cta-title fi" data-fr="Réservez votre place." data-en="Secure your spot.">Réservez votre place.</div>
     <div class="cta-sub fi" data-fr="15$ pour deux jours complets — accès expo, conférences, ateliers, piste de course et course communautaire." data-en="$15 for two full days — expo access, talks, workshops, running track and community run.">15$ pour deux jours complets — accès expo, conférences, ateliers, piste de course et course communautaire.</div>
   </div>
-  <div class="form-box fi">
+  <form class="form-box fi" action="https://formspree.io/f/mykrnkog" method="POST">
     <div class="form-title" data-fr="NOUS CONTACTER" data-en="GET IN TOUCH">NOUS CONTACTER</div>
-    <input class="input" type="text" data-placeholder-fr="Nom" data-placeholder-en="Name" placeholder="Nom" />
-    <input class="input" type="email" data-placeholder-fr="Courriel" data-placeholder-en="Email" placeholder="Courriel" />
-    <input class="input" type="text" data-placeholder-fr="Club de course (facultatif)" data-placeholder-en="Run club (optional)" placeholder="Club de course (facultatif)" />
-    <button class="form-btn" data-fr="ENVOYER ↗" data-en="SEND ↗">ENVOYER ↗</button>
-  </div>
+    <input class="input" type="text" name="nom" data-placeholder-fr="Nom" data-placeholder-en="Name" placeholder="Nom" required />
+    <input class="input" type="email" name="courriel" data-placeholder-fr="Courriel" data-placeholder-en="Email" placeholder="Courriel" required />
+    <input class="input" type="text" name="club" data-placeholder-fr="Club de course (facultatif)" data-placeholder-en="Run club (optional)" placeholder="Club de course (facultatif)" />
+    <button type="submit" class="form-btn" data-fr="ENVOYER ↗" data-en="SEND ↗">ENVOYER ↗</button>
+  </form>
 </section>
 
 <!-- FOOTER -->
