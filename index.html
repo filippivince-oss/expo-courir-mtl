@@ -124,9 +124,9 @@
   .zones-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
   .zone-card { background: var(--indigo); padding: 32px 24px; }
   .zone-card:nth-child(even) { background: var(--navy); }
-  .zone-num { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 32px; font-weight: 900; color: var(--green); margin-bottom: 12px; line-height: 1; }
-  .zone-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 22px; font-weight: 700; color: var(--beige); text-transform: uppercase; margin-bottom: 8px; line-height: 1.1; }
-  .zone-text { font-size: 12px; color: var(--light-indigo); line-height: 1.6; }
+  .zone-num { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 32px; font-weight: 900; color: var(--green); margin-bottom: 12px; line-height: 1; text-shadow: 0 0 20px rgba(184,224,74,0.3); }
+  .zone-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 22px; font-weight: 700; color: #ffffff; text-transform: uppercase; margin-bottom: 8px; line-height: 1.1; letter-spacing: 0.5px; }
+  .zone-text { font-size: 12px; color: #c8c4ff; line-height: 1.6; }
   .zone-card:nth-child(even) .zone-text { color: var(--muted); }
 
   /* WHY */
@@ -390,7 +390,7 @@
 <div class="split">
   <div class="split-visual">
     <div class="split-track"></div>
-    <div class="split-big-text">RUN<br>MTL<br>2027</div>
+    <div class="split-big-text" data-fr="COURIR<br>MTL<br>2027" data-en="RUN<br>MTL<br>2027">COURIR<br>MTL<br>2027</div>
     <div class="split-handwrite" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</div>
   </div>
   <div class="split-content">
@@ -412,14 +412,14 @@
     <span class="zones-handwrite fi" data-fr="tout sous un même toit!" data-en="all under one roof!">tout sous un même toit!</span>
   </div>
   <div class="zones-grid">
-    <div class="zone-card fi"><div class="zone-num">01</div><div class="zone-title" data-fr="Apparel & Chaussures" data-en="Apparel & Shoes">Apparel & Chaussures</div><div class="zone-text" data-fr="Les meilleures marques de vêtements et chaussures de course, des grandes aux locales." data-en="The best running apparel and shoe brands, from global to local.">Les meilleures marques de vêtements et chaussures de course, des grandes aux locales.</div></div>
+    <div class="zone-card fi"><div class="zone-num">01</div><div class="zone-title" data-fr="Vêtements & Chaussures" data-en="Apparel & Shoes">Vêtements & Chaussures</div><div class="zone-text" data-fr="Les meilleures marques de vêtements et chaussures de course, des grandes aux locales." data-en="The best running apparel and shoe brands, from global to local.">Les meilleures marques de vêtements et chaussures de course, des grandes aux locales.</div></div>
     <div class="zone-card fi"><div class="zone-num">02</div><div class="zone-title" data-fr="Technologie" data-en="Technology">Technologie</div><div class="zone-text" data-fr="GPS, montres, applications et tout ce qui propulse la performance moderne." data-en="GPS, watches, apps and everything that powers modern performance.">GPS, montres, applications et tout ce qui propulse la performance moderne.</div></div>
-    <div class="zone-card fi"><div class="zone-num">03</div><div class="zone-title" data-fr="Nutrition" data-en="Nutrition">Nutrition</div><div class="zone-text" data-fr="Gels, boissons, barres et compléments alimentaires pour runners de tous niveaux." data-en="Gels, drinks, bars and supplements for runners of all levels.">Gels, boissons, barres et compléments alimentaires pour runners de tous niveaux.</div></div>
+    <div class="zone-card fi"><div class="zone-num">03</div><div class="zone-title" data-fr="Nutrition" data-en="Nutrition">Nutrition</div><div class="zone-text" data-fr="Gels, boissons, barres et compléments alimentaires pour coureurs de tous niveaux." data-en="Gels, drinks, bars and supplements for runners of all levels.">Gels, boissons, barres et compléments alimentaires pour coureurs de tous niveaux.</div></div>
     <div class="zone-card fi"><div class="zone-num">04</div><div class="zone-title" data-fr="Récupération" data-en="Recovery">Récupération</div><div class="zone-text" data-fr="Rouleaux de massage, thérapies et tout pour récupérer plus vite." data-en="Foam rollers, therapies and everything for faster recovery.">Rouleaux de massage, thérapies et tout pour récupérer plus vite.</div></div>
     <div class="zone-card fi"><div class="zone-num">05</div><div class="zone-title" data-fr="Piste de Course" data-en="Running Track">Piste de Course</div><div class="zone-text" data-fr="Testez les chaussures en conditions réelles sur notre piste intérieure aménagée." data-en="Test shoes in real conditions on our specially set-up indoor track.">Testez les chaussures en conditions réelles sur notre piste intérieure aménagée.</div></div>
     <div class="zone-card fi"><div class="zone-num">06</div><div class="zone-title" data-fr="Run Clubs" data-en="Run Clubs">Run Clubs</div><div class="zone-text" data-fr="Découvrez les clubs de course de Montréal, rejoignez une communauté." data-en="Discover Montreal's run clubs, join a community.">Découvrez les clubs de course de Montréal, rejoignez une communauté.</div></div>
-    <div class="zone-card fi"><div class="zone-num">07</div><div class="zone-title" data-fr="Conférences" data-en="Speaker Stage">Conférences</div><div class="zone-text" data-fr="Scène principale avec conférenciers invités, coaches et athlètes d'élite." data-en="Main stage with guest speakers, coaches and elite athletes.">Scène principale avec conférenciers invités, coaches et athlètes d'élite.</div></div>
-    <div class="zone-card fi"><div class="zone-num">08</div><div class="zone-title" data-fr="Food & Social" data-en="Food & Social">Food & Social</div><div class="zone-text" data-fr="Zone restauration et espace social pour se retrouver et célébrer la course." data-en="Food zone and social space to meet and celebrate running.">Zone restauration et espace social pour se retrouver et célébrer la course.</div></div>
+    <div class="zone-card fi"><div class="zone-num">07</div><div class="zone-title" data-fr="Conférences" data-en="Speaker Stage">Conférences</div><div class="zone-text" data-fr="Scène principale avec conférenciers invités, entraîneurs et athlètes d'élite." data-en="Main stage with guest speakers, coaches and elite athletes.">Scène principale avec conférenciers invités, entraîneurs et athlètes d'élite.</div></div>
+    <div class="zone-card fi"><div class="zone-num">08</div><div class="zone-title" data-fr="Bouffe & Social" data-en="Food & Social">Bouffe & Social</div><div class="zone-text" data-fr="Zone restauration et espace social pour se retrouver et célébrer la course." data-en="Food zone and social space to meet and celebrate running.">Zone restauration et espace social pour se retrouver et célébrer la course.</div></div>
   </div>
 </section>
 
@@ -460,11 +460,11 @@
   </div>
   <div class="day fi">
     <div class="day-time" data-fr="JOUR 02<br>09h–18h" data-en="DAY 02<br>09AM–6PM">JOUR 02<br>09h–18h</div>
-    <div><div class="day-badge" data-fr="SENTIER & ENDURANCE" data-en="TRAIL & ENDURANCE">SENTIER & ENDURANCE</div><div class="day-title" data-fr="Journée Trail & Endurance" data-en="Trail & Endurance Day">Journée Trail & Endurance</div><div class="day-sub" data-fr="Focus sur le trail, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées." data-en="Focus on trail, ultramarathon and outdoors. Technical workshops, demos and guided runs.">Focus sur le trail, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées.</div></div>
+    <div><div class="day-badge" data-fr="SENTIER & ENDURANCE" data-en="TRAIL & ENDURANCE">SENTIER & ENDURANCE</div><div class="day-title" data-fr="Journée Sentier & Endurance" data-en="Trail & Endurance Day">Journée Sentier & Endurance</div><div class="day-sub" data-fr="Focus sur le trail, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées." data-en="Focus on trail, ultramarathon and outdoors. Technical workshops, demos and guided runs.">Focus sur le trail, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées.</div></div>
   </div>
   <div class="day fi">
     <div class="day-time" data-fr="JOUR 02<br>16h–18h" data-en="DAY 02<br>4PM–6PM">JOUR 02<br>16h–18h</div>
-    <div><div class="day-badge" data-fr="COMMUNAUTÉ" data-en="COMMUNITY">COMMUNAUTÉ</div><div class="day-title" data-fr="Course communautaire + Rassemblement" data-en="Community Run + Social">Course communautaire + Rassemblement</div><div class="day-sub" data-fr="Course en groupe dans Montréal suivie d'un rassemblement pour clôturer le weekend." data-en="Group run through Montreal followed by a social to close out the weekend.">Course en groupe dans Montréal suivie d'un rassemblement pour clôturer le weekend.</div></div>
+    <div><div class="day-badge" data-fr="COMMUNAUTÉ" data-en="COMMUNITY">COMMUNAUTÉ</div><div class="day-title" data-fr="Course communautaire + Rassemblement" data-en="Community Run + Social">Course communautaire + Rassemblement</div><div class="day-sub" data-fr="Course en groupe dans Montréal suivie d'un rassemblement pour clôturer le week-end." data-en="Group run through Montreal followed by a social to close out the weekend.">Course en groupe dans Montréal suivie d'un rassemblement pour clôturer le week-end.</div></div>
   </div>
 </section>
 
