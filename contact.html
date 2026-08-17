@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Expo Courir MTL</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 0; }
+  .contact-info { background: var(--navy); padding: 64px 48px; }
+  .contact-info-item { margin-bottom: 40px; }
+  .contact-info-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--green); margin-bottom: 8px; }
+  .contact-info-value { font-size: 14px; color: var(--beige); line-height: 1.7; }
+  .contact-info-value a { color: var(--beige); text-decoration: none; }
+  .contact-info-value a:hover { color: var(--green); }
+  .contact-type-tabs { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+  .contact-type-tab { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 8px 16px; border: 1.5px solid rgba(61,58,140,0.3); color: #888; cursor: pointer; transition: all 0.2s; background: none; }
+  .contact-type-tab.active { background: var(--green); color: var(--navy); border-color: var(--green); }
+  @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } .contact-info { padding: 48px 24px; } }
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <span class="lang-label">LANGUE / LANGUAGE:</span>
+  <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
+    <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
+    <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
+    <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
+    <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
+    <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" onclick="toggleMenu()">✕</span>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+  <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+  <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</a>
+    <div class="nav-links">
+
+      <!-- HOME -->
+      <div class="nav-item">
+        <a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
+      </div>
+
+      <!-- PROGRAMME MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="programme.html" data-fr="PROGRAMME ▾" data-en="SCHEDULE ▾">PROGRAMME ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="HORAIRE" data-en="SCHEDULE">HORAIRE</div>
+            <a href="programme.html#jour1" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 1 — EXPO" data-en="DAY 1 — EXPO">JOUR 1 — EXPO</div>
+              <div class="mega-link-desc" data-fr="Ouverture, marques, démonstrations" data-en="Opening, brands, demos">Ouverture, marques, démonstrations</div>
+            </a>
+            <a href="programme.html#jour2" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 2 — SENTIER & ENDURANCE" data-en="DAY 2 — TRAIL & ENDURANCE">JOUR 2 — SENTIER & ENDURANCE</div>
+              <div class="mega-link-desc" data-fr="Ateliers, conférences, course communautaire" data-en="Workshops, talks, community run">Ateliers, conférences, course communautaire</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="ZONES" data-en="ZONES">ZONES</div>
+            <a href="programme.html#zones" class="mega-link">
+              <div class="mega-link-title" data-fr="8 ZONES THÉMATIQUES" data-en="8 THEMED ZONES">8 ZONES THÉMATIQUES</div>
+              <div class="mega-link-desc" data-fr="Vêtements, tech, nutrition, récupération..." data-en="Apparel, tech, nutrition, recovery...">Vêtements, tech, nutrition, récupération...</div>
+            </a>
+            <a href="programme.html#conferences" class="mega-link">
+              <div class="mega-link-title" data-fr="CONFÉRENCES" data-en="SPEAKER STAGE">CONFÉRENCES</div>
+              <div class="mega-link-desc" data-fr="Experts, entraîneurs, athlètes d'élite" data-en="Experts, coaches, elite athletes">Experts, entraîneurs, athlètes d'élite</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="about.html" data-fr="À PROPOS ▾" data-en="ABOUT ▾">À PROPOS ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="L'ÉVÉNEMENT" data-en="THE EVENT">L'ÉVÉNEMENT</div>
+            <a href="about.html#mission" class="mega-link">
+              <div class="mega-link-title" data-fr="NOTRE MISSION" data-en="OUR MISSION">NOTRE MISSION</div>
+              <div class="mega-link-desc" data-fr="Pourquoi on a créé cet expo" data-en="Why we created this expo">Pourquoi on a créé cet expo</div>
+            </a>
+            <a href="about.html#equipe" class="mega-link">
+              <div class="mega-link-title" data-fr="L'ÉQUIPE" data-en="THE TEAM">L'ÉQUIPE</div>
+              <div class="mega-link-desc" data-fr="Camille, Geoffroy, Vincent" data-en="Camille, Geoffroy, Vincent">Camille, Geoffroy, Vincent</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="PARTICIPER" data-en="GET INVOLVED">PARTICIPER</div>
+            <a href="volunteer.html" class="mega-link">
+              <div class="mega-link-title" data-fr="BÉNÉVOLAT" data-en="VOLUNTEER">BÉNÉVOLAT</div>
+              <div class="mega-link-desc" data-fr="Rejoignez notre équipe de bénévoles" data-en="Join our volunteer team">Rejoignez notre équipe de bénévoles</div>
+            </a>
+            <a href="contact.html#partenaires" class="mega-link">
+              <div class="mega-link-title" data-fr="PARTENAIRES" data-en="PARTNERS">PARTENAIRES</div>
+              <div class="mega-link-desc" data-fr="Devenez exposant ou commanditaire" data-en="Become an exhibitor or sponsor">Devenez exposant ou commanditaire</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item"><a href="volunteer.html" data-fr="BÉNÉVOLES" data-en="VOLUNTEER">BÉNÉVOLES</a></div>
+      <div class="nav-item"><a href="faq.html">FAQ</a></div>
+      <div class="nav-item"><a href="contact.html" data-fr="CONTACT" data-en="CONTACT">CONTACT</a></div>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#signup" class="nav-cta" data-fr="MISES À JOUR ↗" data-en="UPDATES ↗">MISES À JOUR ↗</a>
+      <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-tag" data-fr="ON EST LÀ POUR VOUS" data-en="WE'RE HERE FOR YOU">ON EST LÀ POUR VOUS</div>
+    <div class="page-hero-title" data-fr="Contact" data-en="Contact">Contact</div>
+    <div class="page-hero-sub" data-fr="Questions, partenariats, commandites ou simplement dire bonjour — notre équipe répond dans les 48 heures." data-en="Questions, partnerships, sponsorships or just saying hello — our team responds within 48 hours.">Questions, partenariats, commandites ou simplement dire bonjour — notre équipe répond dans les 48 heures.</div>
+  </div>
+</div>
+
+<div class="contact-grid">
+  <div class="contact-info">
+    <div class="contact-info-item fi">
+      <div class="contact-info-label" data-fr="COURRIEL" data-en="EMAIL">COURRIEL</div>
+      <div class="contact-info-value"><a href="mailto:info@expocourirmtl.com">info@expocourirmtl.com</a></div>
+    </div>
+    <div class="contact-info-item fi">
+      <div class="contact-info-label" data-fr="RÉSEAUX SOCIAUX" data-en="SOCIAL MEDIA">RÉSEAUX SOCIAUX</div>
+      <div class="contact-info-value">
+        <div><a href="#">@expocourirmtl</a> — Instagram</div>
+        <div><a href="#">Expo Courir MTL</a> — Facebook</div>
+        <div><a href="#">Expo Courir MTL</a> — Strava</div>
+      </div>
+    </div>
+    <div class="contact-info-item fi">
+      <div class="contact-info-label" data-fr="LIEU" data-en="LOCATION">LIEU</div>
+      <div class="contact-info-value" data-fr="Montréal, Québec, Canada<br>Lieu exact — à venir" data-en="Montreal, Quebec, Canada<br>Exact venue — coming soon">Montréal, Québec, Canada<br>Lieu exact — à venir</div>
+    </div>
+    <div class="contact-info-item fi">
+      <div class="contact-info-label" data-fr="DATE" data-en="DATE">DATE</div>
+      <div class="contact-info-value" data-fr="Avril 2027<br>Dates exactes — à venir" data-en="April 2027<br>Exact dates — coming soon">Avril 2027<br>Dates exactes — à venir</div>
+    </div>
+    <div class="contact-info-item fi">
+      <div class="contact-info-label" data-fr="INFOLETTRE" data-en="NEWSLETTER">INFOLETTRE</div>
+      <div class="contact-info-value">
+        <form action="https://expocourirmtl.us3.list-manage.com/subscribe/post?u=7fe7dbd24e7d56eac640e1bd0&id=2d161b6c83&f_id=00e3cce0f0" method="post" target="_blank" style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+          <input type="email" name="EMAIL" placeholder="votre@courriel.com" style="padding:10px 14px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.06);color:#fff;font-family:'Space Grotesk',sans-serif;font-size:13px;outline:none;" required>
+          <input type="text" name="b_7fe7dbd24e7d56eac640e1bd0_2d161b6c83" tabindex="-1" value="" style="position:absolute;left:-5000px;" aria-hidden="true">
+          <button type="submit" class="btn-primary" style="align-self:flex-start;" data-fr="S'INSCRIRE ↗" data-en="SUBSCRIBE ↗">S'INSCRIRE ↗</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <form class="form-box" action="https://formspree.io/f/mykrnkog" method="POST" id="partenaires">
+    <div class="form-title" data-fr="ENVOYEZ-NOUS UN MESSAGE" data-en="SEND US A MESSAGE">ENVOYEZ-NOUS UN MESSAGE</div>
+    <div class="contact-type-tabs">
+      <button type="button" class="contact-type-tab active" onclick="setType(this, 'general')" data-fr="GÉNÉRAL" data-en="GENERAL">GÉNÉRAL</button>
+      <button type="button" class="contact-type-tab" onclick="setType(this, 'exposant')" data-fr="EXPOSANT" data-en="EXHIBITOR">EXPOSANT</button>
+      <button type="button" class="contact-type-tab" onclick="setType(this, 'commanditaire')" data-fr="COMMANDITAIRE" data-en="SPONSOR">COMMANDITAIRE</button>
+      <button type="button" class="contact-type-tab" onclick="setType(this, 'media')" data-fr="MÉDIA" data-en="MEDIA">MÉDIA</button>
+    </div>
+    <input type="hidden" name="type" id="contactType" value="general">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" data-fr="PRÉNOM *" data-en="FIRST NAME *">PRÉNOM *</label>
+        <input class="input" type="text" name="prenom" data-placeholder-fr="Prénom" data-placeholder-en="First name" placeholder="Prénom" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="NOM *" data-en="LAST NAME *">NOM *</label>
+        <input class="input" type="text" name="nom" data-placeholder-fr="Nom" data-placeholder-en="Last name" placeholder="Nom" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" data-fr="COURRIEL *" data-en="EMAIL *">COURRIEL *</label>
+      <input class="input" type="email" name="email" data-placeholder-fr="votre@courriel.com" data-placeholder-en="your@email.com" placeholder="votre@courriel.com" required>
+    </div>
+    <div class="form-group">
+      <label class="form-label" data-fr="ORGANISATION / MARQUE" data-en="ORGANIZATION / BRAND">ORGANISATION / MARQUE</label>
+      <input class="input" type="text" name="organisation" data-placeholder-fr="Nom de votre organisation ou marque" data-placeholder-en="Your organization or brand name" placeholder="Nom de votre organisation ou marque">
+    </div>
+    <div class="form-group">
+      <label class="form-label" data-fr="MESSAGE *" data-en="MESSAGE *">MESSAGE *</label>
+      <textarea class="input" name="message" data-placeholder-fr="Comment pouvons-nous vous aider ?" data-placeholder-en="How can we help you?" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+    </div>
+    <button type="submit" class="form-btn form-btn-full" data-fr="ENVOYER ↗" data-en="SEND ↗">ENVOYER ↗</button>
+    <p style="font-size:11px;color:#aaa;margin-top:12px;" data-fr="Notre équipe vous répond dans les 48 heures." data-en="Our team will respond within 48 hours.">Notre équipe vous répond dans les 48 heures.</p>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo" data-fr="Expo Courir MTL" data-en="MTL Run Expo">Expo Courir MTL</div>
+      <div class="footer-tagline" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="NAVIGATION" data-en="NAVIGATION">NAVIGATION</div>
+      <div class="footer-links">
+        <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+        <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+        <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+        <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="SUIVEZ-NOUS" data-en="FOLLOW US">SUIVEZ-NOUS</div>
+      <div class="footer-social">
+        <a href="#" class="social-btn">IG</a>
+        <a href="#" class="social-btn">FB</a>
+        <a href="#" class="social-btn">STR</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" data-fr="© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS." data-en="© 2027 MTL RUN EXPO. ALL RIGHTS RESERVED.">© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS.</div>
+    <div class="footer-copy">MONTRÉAL, QUÉBEC, CANADA</div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  function setType(btn, type) {
+    document.querySelectorAll('.contact-type-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('contactType').value = type;
+  }
+</script>
+</body>
+</html>

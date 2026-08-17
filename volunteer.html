@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bénévoles / Volunteer — Expo Courir MTL</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .vol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .vol-why { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+  .vol-why-card { background: var(--indigo); padding: 32px 28px; }
+  .vol-why-card:nth-child(even) { background: rgba(61,58,140,0.5); }
+  .vol-why-num { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 48px; font-weight: 900; color: var(--green); line-height: 1; margin-bottom: 10px; }
+  .vol-why-title { font-size: 16px; font-weight: 700; color: var(--beige); margin-bottom: 8px; }
+  .vol-why-text { font-size: 13px; color: var(--light-indigo); line-height: 1.6; }
+  .roles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 40px; }
+  .role-card { background: #ccc9bc; padding: 28px 24px; transition: background 0.2s; }
+  .role-card:hover { background: var(--navy); }
+  .role-card:hover .role-title { color: var(--green); }
+  .role-card:hover .role-text { color: var(--muted); }
+  .role-title { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--navy); margin-bottom: 8px; transition: color 0.2s; }
+  .role-text { font-size: 12px; color: #666; line-height: 1.6; transition: color 0.2s; }
+  .success-msg { background: var(--green); color: var(--navy); padding: 20px 24px; font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 1px; display: none; margin-top: 16px; }
+  @media (max-width: 768px) { .vol-grid { grid-template-columns: 1fr; } .vol-why { grid-template-columns: 1fr; } .roles-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .roles-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <span class="lang-label">LANGUE / LANGUAGE:</span>
+  <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
+    <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
+    <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
+    <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
+    <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
+    <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" onclick="toggleMenu()">✕</span>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+  <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+  <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</a>
+    <div class="nav-links">
+
+      <!-- HOME -->
+      <div class="nav-item">
+        <a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
+      </div>
+
+      <!-- PROGRAMME MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="programme.html" data-fr="PROGRAMME ▾" data-en="SCHEDULE ▾">PROGRAMME ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="HORAIRE" data-en="SCHEDULE">HORAIRE</div>
+            <a href="programme.html#jour1" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 1 — EXPO" data-en="DAY 1 — EXPO">JOUR 1 — EXPO</div>
+              <div class="mega-link-desc" data-fr="Ouverture, marques, démonstrations" data-en="Opening, brands, demos">Ouverture, marques, démonstrations</div>
+            </a>
+            <a href="programme.html#jour2" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 2 — SENTIER & ENDURANCE" data-en="DAY 2 — TRAIL & ENDURANCE">JOUR 2 — SENTIER & ENDURANCE</div>
+              <div class="mega-link-desc" data-fr="Ateliers, conférences, course communautaire" data-en="Workshops, talks, community run">Ateliers, conférences, course communautaire</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="ZONES" data-en="ZONES">ZONES</div>
+            <a href="programme.html#zones" class="mega-link">
+              <div class="mega-link-title" data-fr="8 ZONES THÉMATIQUES" data-en="8 THEMED ZONES">8 ZONES THÉMATIQUES</div>
+              <div class="mega-link-desc" data-fr="Vêtements, tech, nutrition, récupération..." data-en="Apparel, tech, nutrition, recovery...">Vêtements, tech, nutrition, récupération...</div>
+            </a>
+            <a href="programme.html#conferences" class="mega-link">
+              <div class="mega-link-title" data-fr="CONFÉRENCES" data-en="SPEAKER STAGE">CONFÉRENCES</div>
+              <div class="mega-link-desc" data-fr="Experts, entraîneurs, athlètes d'élite" data-en="Experts, coaches, elite athletes">Experts, entraîneurs, athlètes d'élite</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="about.html" data-fr="À PROPOS ▾" data-en="ABOUT ▾">À PROPOS ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="L'ÉVÉNEMENT" data-en="THE EVENT">L'ÉVÉNEMENT</div>
+            <a href="about.html#mission" class="mega-link">
+              <div class="mega-link-title" data-fr="NOTRE MISSION" data-en="OUR MISSION">NOTRE MISSION</div>
+              <div class="mega-link-desc" data-fr="Pourquoi on a créé cet expo" data-en="Why we created this expo">Pourquoi on a créé cet expo</div>
+            </a>
+            <a href="about.html#equipe" class="mega-link">
+              <div class="mega-link-title" data-fr="L'ÉQUIPE" data-en="THE TEAM">L'ÉQUIPE</div>
+              <div class="mega-link-desc" data-fr="Camille, Geoffroy, Vincent" data-en="Camille, Geoffroy, Vincent">Camille, Geoffroy, Vincent</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="PARTICIPER" data-en="GET INVOLVED">PARTICIPER</div>
+            <a href="volunteer.html" class="mega-link">
+              <div class="mega-link-title" data-fr="BÉNÉVOLAT" data-en="VOLUNTEER">BÉNÉVOLAT</div>
+              <div class="mega-link-desc" data-fr="Rejoignez notre équipe de bénévoles" data-en="Join our volunteer team">Rejoignez notre équipe de bénévoles</div>
+            </a>
+            <a href="contact.html#partenaires" class="mega-link">
+              <div class="mega-link-title" data-fr="PARTENAIRES" data-en="PARTNERS">PARTENAIRES</div>
+              <div class="mega-link-desc" data-fr="Devenez exposant ou commanditaire" data-en="Become an exhibitor or sponsor">Devenez exposant ou commanditaire</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item"><a href="volunteer.html" data-fr="BÉNÉVOLES" data-en="VOLUNTEER">BÉNÉVOLES</a></div>
+      <div class="nav-item"><a href="faq.html">FAQ</a></div>
+      <div class="nav-item"><a href="contact.html" data-fr="CONTACT" data-en="CONTACT">CONTACT</a></div>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#signup" class="nav-cta" data-fr="MISES À JOUR ↗" data-en="UPDATES ↗">MISES À JOUR ↗</a>
+      <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-tag" data-fr="REJOIGNEZ L'ÉQUIPE" data-en="JOIN THE TEAM">REJOIGNEZ L'ÉQUIPE</div>
+    <div class="page-hero-title">
+      <span data-fr="BÉNÉVOLES" data-en="VOLUNTEER">BÉNÉVOLES</span>
+    </div>
+    <div class="page-hero-sub" data-fr="Faites partie de l'histoire. Aidez à bâtir le premier grand expo de course à pied de Montréal." data-en="Be part of history. Help build Montreal's first major running expo.">Faites partie de l'histoire. Aidez à bâtir le premier grand expo de course à pied de Montréal.</div>
+  </div>
+</div>
+
+<!-- WHY VOLUNTEER -->
+<section class="section section-dark">
+  <div class="section-tag-light fi" data-fr="POURQUOI FAIRE DU BÉNÉVOLAT" data-en="WHY VOLUNTEER">POURQUOI FAIRE DU BÉNÉVOLAT</div>
+  <div class="section-title-light fi" data-fr="Des avantages qui valent le coup." data-en="Perks worth running for.">Des avantages qui valent le coup.</div>
+  <div class="vol-why">
+    <div class="vol-why-card fi">
+      <div class="vol-why-num">01</div>
+      <div class="vol-why-title" data-fr="Accès VIP à l'expo" data-en="VIP Expo Access">Accès VIP à l'expo</div>
+      <div class="vol-why-text" data-fr="Accès à toutes les zones, conférences et activités pendant les deux jours." data-en="Access to all zones, talks and activities over both days.">Accès à toutes les zones, conférences et activités pendant les deux jours.</div>
+    </div>
+    <div class="vol-why-card fi2">
+      <div class="vol-why-num">02</div>
+      <div class="vol-why-title" data-fr="Kit bénévole exclusif" data-en="Exclusive Volunteer Kit">Kit bénévole exclusif</div>
+      <div class="vol-why-text" data-fr="T-shirt officiel, sac et produits offerts par nos partenaires exposants." data-en="Official t-shirt, bag and products from our exhibitor partners.">T-shirt officiel, sac et produits offerts par nos partenaires exposants.</div>
+    </div>
+    <div class="vol-why-card fi3">
+      <div class="vol-why-num">03</div>
+      <div class="vol-why-title" data-fr="Réseautage" data-en="Networking">Réseautage</div>
+      <div class="vol-why-text" data-fr="Rencontrez des professionnels de l'industrie, des athlètes et des passionnés de course." data-en="Meet industry professionals, athletes and running enthusiasts.">Rencontrez des professionnels de l'industrie, des athlètes et des passionnés de course.</div>
+    </div>
+    <div class="vol-why-card fi">
+      <div class="vol-why-num">04</div>
+      <div class="vol-why-title" data-fr="Repas inclus" data-en="Meals Included">Repas inclus</div>
+      <div class="vol-why-text" data-fr="Repas et collations fournis pendant vos quarts de travail." data-en="Meals and snacks provided during your shifts.">Repas et collations fournis pendant vos quarts de travail.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROLES -->
+<section class="section section-beige">
+  <div class="section-tag fi" data-fr="POSTES DISPONIBLES" data-en="AVAILABLE ROLES">POSTES DISPONIBLES</div>
+  <div class="section-title fi" data-fr="Trouvez votre rôle." data-en="Find your role.">Trouvez votre rôle.</div>
+  <div class="roles-grid">
+    <div class="role-card fi"><div class="role-title" data-fr="ACCUEIL & INSCRIPTION" data-en="WELCOME & REGISTRATION">ACCUEIL & INSCRIPTION</div><div class="role-text" data-fr="Accueillir les visiteurs, valider les billets et répondre aux questions à l'entrée." data-en="Welcome visitors, validate tickets and answer questions at the entrance.">Accueillir les visiteurs, valider les billets et répondre aux questions à l'entrée.</div></div>
+    <div class="role-card fi"><div class="role-title" data-fr="ORIENTATION & INFORMATION" data-en="WAYFINDING & INFORMATION">ORIENTATION & INFORMATION</div><div class="role-text" data-fr="Guider les participants à travers les zones et répondre à leurs questions." data-en="Guide participants through zones and answer their questions.">Guider les participants à travers les zones et répondre à leurs questions.</div></div>
+    <div class="role-card fi"><div class="role-title" data-fr="ZONE PISTE DE COURSE" data-en="RUNNING TRACK ZONE">ZONE PISTE DE COURSE</div><div class="role-text" data-fr="Superviser les essais de chaussures et assurer la sécurité sur la piste." data-en="Supervise shoe testing and ensure safety on the track.">Superviser les essais de chaussures et assurer la sécurité sur la piste.</div></div>
+    <div class="role-card fi2"><div class="role-title" data-fr="SUPPORT CONFÉRENCES" data-en="SPEAKER STAGE SUPPORT">SUPPORT CONFÉRENCES</div><div class="role-text" data-fr="Assistance technique et logistique pour les présentations et conférences." data-en="Technical and logistical support for presentations and talks.">Assistance technique et logistique pour les présentations et conférences.</div></div>
+    <div class="role-card fi2"><div class="role-title" data-fr="COURSE COMMUNAUTAIRE" data-en="COMMUNITY RUN">COURSE COMMUNAUTAIRE</div><div class="role-text" data-fr="Assister à l'organisation et la supervision de la course de groupe du Jour 2." data-en="Assist with organizing and supervising the Day 2 group run.">Assister à l'organisation et la supervision de la course de groupe du Jour 2.</div></div>
+    <div class="role-card fi2"><div class="role-title" data-fr="RÉSEAUX SOCIAUX & CONTENU" data-en="SOCIAL MEDIA & CONTENT">RÉSEAUX SOCIAUX & CONTENU</div><div class="role-text" data-fr="Documenter l'événement, prendre des photos et créer du contenu en direct." data-en="Document the event, take photos and create live content.">Documenter l'événement, prendre des photos et créer du contenu en direct.</div></div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section section-indigo" id="form">
+  <div class="vol-grid">
+    <div>
+      <div class="section-tag-light fi" data-fr="POSTULER" data-en="APPLY NOW">POSTULER</div>
+      <div class="section-title-light fi" data-fr="Rejoignez l'équipe." data-en="Join the team.">Rejoignez l'équipe.</div>
+      <div class="fi" style="font-size:14px;color:var(--light-indigo);line-height:1.8;margin-bottom:24px;" data-fr="Remplissez le formulaire ci-contre et notre équipe vous contactera avec plus d'informations sur les disponibilités et les quarts de travail." data-en="Fill out the form and our team will contact you with more information about availability and shifts.">Remplissez le formulaire ci-contre et notre équipe vous contactera avec plus d'informations sur les disponibilités et les quarts de travail.</div>
+      <div class="fi" style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--green);margin-bottom:8px;" data-fr="ENGAGEMENT MINIMUM" data-en="MINIMUM COMMITMENT">ENGAGEMENT MINIMUM</div>
+      <div class="fi" style="font-size:13px;color:var(--light-indigo);line-height:1.7;" data-fr="1 journée complète (8h). Les bénévoles pour les 2 jours reçoivent des avantages supplémentaires." data-en="1 full day (8h). Volunteers for both days receive additional perks.">1 journée complète (8h). Les bénévoles pour les 2 jours reçoivent des avantages supplémentaires.</div>
+    </div>
+    <form class="form-box fi" action="https://formspree.io/f/mykrnkog" method="POST">
+      <div class="form-title" data-fr="FORMULAIRE DE BÉNÉVOLAT" data-en="VOLUNTEER APPLICATION">FORMULAIRE DE BÉNÉVOLAT</div>
+      <input type="hidden" name="_subject" value="Nouvelle candidature bénévole — Expo Courir MTL">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" data-fr="PRÉNOM *" data-en="FIRST NAME *">PRÉNOM *</label>
+          <input class="input" type="text" name="prenom" data-placeholder-fr="Prénom" data-placeholder-en="First name" placeholder="Prénom" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-fr="NOM *" data-en="LAST NAME *">NOM *</label>
+          <input class="input" type="text" name="nom" data-placeholder-fr="Nom" data-placeholder-en="Last name" placeholder="Nom" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="COURRIEL *" data-en="EMAIL *">COURRIEL *</label>
+        <input class="input" type="email" name="email" data-placeholder-fr="votre@courriel.com" data-placeholder-en="your@email.com" placeholder="votre@courriel.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="TÉLÉPHONE" data-en="PHONE">TÉLÉPHONE</label>
+        <input class="input" type="tel" name="telephone" data-placeholder-fr="514-000-0000" data-placeholder-en="514-000-0000" placeholder="514-000-0000">
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="DISPONIBILITÉ *" data-en="AVAILABILITY *">DISPONIBILITÉ *</label>
+        <select class="input" name="disponibilite" required>
+          <option value="" data-fr="Sélectionnez" data-en="Select">Sélectionnez</option>
+          <option value="jour1" data-fr="Jour 1 seulement" data-en="Day 1 only">Jour 1 seulement</option>
+          <option value="jour2" data-fr="Jour 2 seulement" data-en="Day 2 only">Jour 2 seulement</option>
+          <option value="les2" data-fr="Les deux jours" data-en="Both days">Les deux jours</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="RÔLE PRÉFÉRÉ" data-en="PREFERRED ROLE">RÔLE PRÉFÉRÉ</label>
+        <select class="input" name="role">
+          <option value="" data-fr="Sélectionnez" data-en="Select">Sélectionnez</option>
+          <option value="accueil" data-fr="Accueil & Inscription" data-en="Welcome & Registration">Accueil & Inscription</option>
+          <option value="orientation" data-fr="Orientation & Information" data-en="Wayfinding & Information">Orientation & Information</option>
+          <option value="piste" data-fr="Zone Piste de Course" data-en="Running Track Zone">Zone Piste de Course</option>
+          <option value="conferences" data-fr="Support Conférences" data-en="Speaker Stage Support">Support Conférences</option>
+          <option value="course" data-fr="Course Communautaire" data-en="Community Run">Course Communautaire</option>
+          <option value="social" data-fr="Réseaux Sociaux & Contenu" data-en="Social Media & Content">Réseaux Sociaux & Contenu</option>
+          <option value="flexible" data-fr="Flexible / Peu importe" data-en="Flexible / Any role">Flexible / Peu importe</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="EXPÉRIENCE PERTINENTE" data-en="RELEVANT EXPERIENCE">EXPÉRIENCE PERTINENTE</label>
+        <textarea class="input" name="experience" data-placeholder-fr="Expérience en bénévolat, événementiel, course à pied..." data-placeholder-en="Volunteering, event management, running experience..." placeholder="Expérience en bénévolat, événementiel, course à pied..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-fr="CLUB DE COURSE (FACULTATIF)" data-en="RUN CLUB (OPTIONAL)">CLUB DE COURSE (FACULTATIF)</label>
+        <input class="input" type="text" name="club" data-placeholder-fr="Votre club de course" data-placeholder-en="Your running club" placeholder="Votre club de course">
+      </div>
+      <button type="submit" class="form-btn form-btn-full" data-fr="ENVOYER MA CANDIDATURE ↗" data-en="SUBMIT APPLICATION ↗">ENVOYER MA CANDIDATURE ↗</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo" data-fr="Expo Courir MTL" data-en="MTL Run Expo">Expo Courir MTL</div>
+      <div class="footer-tagline" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="NAVIGATION" data-en="NAVIGATION">NAVIGATION</div>
+      <div class="footer-links">
+        <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+        <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+        <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="SUIVEZ-NOUS" data-en="FOLLOW US">SUIVEZ-NOUS</div>
+      <div class="footer-social">
+        <a href="#" class="social-btn">IG</a>
+        <a href="#" class="social-btn">FB</a>
+        <a href="#" class="social-btn">STR</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" data-fr="© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS." data-en="© 2027 MTL RUN EXPO. ALL RIGHTS RESERVED.">© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS.</div>
+    <div class="footer-copy">MONTRÉAL, QUÉBEC, CANADA</div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

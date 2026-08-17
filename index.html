@@ -1,76 +1,49 @@
 <!DOCTYPE html>
-<html lang="fr" id="html-root">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Expo Courir MTL / MTL Run Expo — Avril 2027</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Barlow+Condensed:ital,wght@0,700;1,700;1,900&family=Space+Grotesk:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --beige: #D8D4C8;
-    --navy: #1a1a2e;
-    --indigo: #3D3A8C;
-    --green: #B8E04A;
-    --muted: #888;
-    --light-indigo: #B0AEDD;
-    --cream: #ece8de;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'Space Grotesk', sans-serif; background: var(--beige); color: var(--navy); overflow-x: hidden; }
-
-  /* LANG BAR */
-  .lang-bar { background: var(--navy); padding: 8px 40px; display: flex; justify-content: flex-end; align-items: center; gap: 10px; }
-  .lang-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #444; }
-  .lang-btn { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; color: #444; cursor: pointer; padding: 4px 12px; border: 1px solid #333; background: none; transition: all 0.2s; }
-  .lang-btn.active { color: var(--green); border-color: var(--green); }
-
-  /* TICKER */
-  .ticker-wrap { background: var(--green); overflow: hidden; padding: 10px 0; border-bottom: 2px solid var(--navy); }
-  .ticker { display: flex; width: max-content; animation: ticker 28s linear infinite; }
-  .ticker-item { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: var(--navy); padding: 0 28px; white-space: nowrap; }
-  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-  /* NAV */
-  .nav { position: sticky; top: 0; z-index: 100; background: rgba(26,26,46,0.97); backdrop-filter: blur(12px); display: flex; justify-content: space-between; align-items: center; padding: 16px 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .nav-logo { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 3px; color: #fff; text-decoration: none; }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--green); }
-  .nav-right { display: flex; align-items: center; gap: 16px; }
-  .nav-cta { background: var(--green); color: var(--navy); font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 10px 20px; border-radius: 999px; text-decoration: none; transition: all 0.2s; }
-  .nav-cta:hover { background: #a6cc3e; }
-  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-  .nav-hamburger span { width: 24px; height: 2px; background: #fff; display: block; }
-
-  /* HERO */
-  .hero { min-height: 100vh; background: var(--navy); position: relative; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+  /* HOME SPECIFIC */
+  .hero { min-height: 100vh; background: var(--navy); display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0d0d1a 0%, #1a1a2e 50%, #1e1840 100%); }
   .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(61,58,140,0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(61,58,140,0.12) 1px, transparent 1px); background-size: 60px 60px; }
-  .hero-circle { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 550px; height: 550px; border-radius: 50%; border: 1px solid rgba(61,58,140,0.25); }
-  .hero-circle::before { content:''; position:absolute; inset:50px; border-radius:50%; border:1px solid rgba(184,224,74,0.1); }
-  .hero-circle::after { content:''; position:absolute; inset:130px; border-radius:50%; border:1px solid rgba(61,58,140,0.15); }
-  .hero-handwrite-1 { position: absolute; top: 22%; left: 42%; font-family: 'Caveat', cursive; font-size: 18px; color: rgba(216,212,200,0.3); transform: rotate(-8deg); pointer-events: none; }
-  .hero-handwrite-2 { position: absolute; bottom: 28%; right: 8%; font-family: 'Caveat', cursive; font-size: 15px; color: rgba(184,224,74,0.4); transform: rotate(4deg); pointer-events: none; }
-  .hero-content { position: relative; z-index: 2; padding: 0 40px 64px; }
-  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 4px; color: var(--green); margin-bottom: 20px; opacity:0; transform:translateY(20px); transition: all 0.8s ease 0.2s; }
+  .hero-circle { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 550px; height: 550px; border-radius: 50%; border: 1px solid rgba(61,58,140,0.2); }
+  .hero-circle::before { content:''; position:absolute; inset:60px; border-radius:50%; border:1px solid rgba(184,224,74,0.08); }
+  .hero-content { position: relative; z-index: 2; padding: 0 40px 56px; }
+  .hero-eyebrow { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 4px; color: var(--green); margin-bottom: 16px; opacity:0; transform:translateY(20px); transition: all 0.8s ease 0.2s; }
   .hero-eyebrow.vis { opacity:1; transform:translateY(0); }
   .hero-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(72px, 13vw, 150px); line-height: 0.88; color: var(--beige); text-transform: uppercase; opacity:0; transform:translateY(40px); transition: all 1s ease 0.4s; }
   .hero-title.vis { opacity:1; transform:translateY(0); }
   .hero-title .accent { color: var(--green); }
-  .hero-title .outline { -webkit-text-stroke: 3px #ffffff; color: transparent; filter: drop-shadow(0 0 1px #fff); }
-  .hero-handwrite-hero { font-family: 'Caveat', cursive; font-size: 22px; color: rgba(184,224,74,0.6); display: block; margin-top: 8px; font-style: normal; -webkit-text-stroke: 0; letter-spacing: 1px; }
-  .hero-meta { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; opacity:0; transform:translateY(20px); transition: all 0.8s ease 0.7s; }
-  .hero-meta.vis { opacity:1; transform:translateY(0); }
-  .meta-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px 16px; }
-  .meta-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: rgba(255,255,255,0.4); margin-bottom: 3px; }
-  .meta-val { font-family: 'Space Mono', monospace; font-size: 12px; color: #fff; font-weight: 700; }
-  .hero-btns { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; opacity:0; transform:translateY(20px); transition: all 0.8s ease 0.9s; }
-  .hero-btns.vis { opacity:1; transform:translateY(0); }
-  .btn-primary { background: var(--green); color: var(--navy); font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 14px 28px; border-radius: 999px; text-decoration: none; transition: all 0.2s; display: inline-block; }
-  .btn-primary:hover { background: #a6cc3e; transform: translateY(-2px); }
-  .btn-outline { background: transparent; color: var(--beige); font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 14px 28px; border-radius: 999px; border: 1.5px solid rgba(216,212,200,0.3); text-decoration: none; transition: all 0.2s; display: inline-block; }
-  .btn-outline:hover { border-color: var(--beige); transform: translateY(-2px); }
+  .hero-title .outline { -webkit-text-stroke: 2px var(--beige); color: transparent; }
+  .hero-sub { font-size: 16px; color: var(--muted); max-width: 500px; line-height: 1.7; margin: 16px 0 0; opacity:0; transform:translateY(20px); transition: all 0.8s ease 0.6s; }
+  .hero-sub.vis { opacity:1; transform:translateY(0); }
+
+  /* EMAIL SIGNUP IN HERO */
+  .hero-signup { margin-top: 32px; opacity:0; transform:translateY(20px); transition: all 0.8s ease 0.8s; }
+  .hero-signup.vis { opacity:1; transform:translateY(0); }
+  .signup-label { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,0.5); margin-bottom: 12px; display: block; }
+  .signup-form { display: flex; gap: 0; max-width: 480px; }
+  .signup-input { flex: 1; padding: 14px 20px; border: none; background: rgba(255,255,255,0.08); color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 14px; outline: none; border: 1.5px solid rgba(255,255,255,0.1); border-right: none; }
+  .signup-input::placeholder { color: rgba(255,255,255,0.3); }
+  .signup-input:focus { border-color: var(--green); background: rgba(255,255,255,0.12); }
+  .signup-btn { background: var(--green); color: var(--navy); font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; padding: 14px 24px; border: none; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+  .signup-btn:hover { background: #a6cc3e; }
+  .signup-note { font-size: 11px; color: rgba(255,255,255,0.25); margin-top: 8px; }
+
+  /* RUNNER TYPES */
+  .runner-types { background: var(--navy); border-top: 1px solid rgba(61,58,140,0.3); }
+  .runner-types-inner { display: flex; overflow-x: auto; scrollbar-width: none; }
+  .runner-types-inner::-webkit-scrollbar { display: none; }
+  .runner-type { flex: 1; min-width: 140px; padding: 28px 20px; border-right: 1px solid rgba(61,58,140,0.2); text-align: center; transition: background 0.2s; cursor: default; }
+  .runner-type:last-child { border-right: none; }
+  .runner-type:hover { background: rgba(61,58,140,0.2); }
+  .runner-type-icon { font-size: 11px; font-family: 'Space Mono', monospace; letter-spacing: 2px; color: var(--green); margin-bottom: 8px; }
+  .runner-type-name { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 22px; color: var(--beige); text-transform: uppercase; margin-bottom: 4px; }
+  .runner-type-desc { font-size: 11px; color: #555; line-height: 1.4; }
 
   /* COUNTDOWN */
   .countdown-bar { background: var(--indigo); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
@@ -82,13 +55,11 @@
   .countdown-sep { font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 900; color: rgba(184,224,74,0.3); margin-top: 4px; }
 
   /* TICKET BANNER */
-  .ticket-banner { background: var(--beige); border-top: 2px solid var(--navy); border-bottom: 2px solid var(--navy); padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; position: relative; overflow: hidden; }
-  .ticket-handwrite { position: absolute; right: 380px; top: 10px; font-family: 'Caveat', cursive; font-size: 18px; color: rgba(26,26,46,0.45); transform: rotate(-4deg); pointer-events: none; }
-  .ticket-left { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .ticket-banner { background: var(--beige); border-top: 2px solid var(--navy); border-bottom: 2px solid var(--navy); padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
   .ticket-price { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 72px; color: var(--navy); line-height: 1; }
   .ticket-title { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: var(--navy); margin-bottom: 6px; }
-  .ticket-detail { font-size: 13px; color: #555; line-height: 1.6; }
-  .ticket-includes { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .ticket-detail { font-size: 13px; color: #555; line-height: 1.6; max-width: 400px; }
+  .ticket-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
   .ticket-tag { background: var(--navy); color: var(--beige); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1px; padding: 5px 12px; }
 
   /* STATS */
@@ -98,170 +69,62 @@
   .stat-num { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 44px; font-weight: 900; color: var(--navy); }
   .stat-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: #3a4a20; margin-top: 3px; }
 
-  /* SPLIT */
+  /* ABOUT SPLIT */
   .split { display: grid; grid-template-columns: 1fr 1fr; }
   .split-visual { background: var(--navy); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 400px; }
   .split-track { position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(61,58,140,0.12) 48px, rgba(61,58,140,0.12) 50px); }
-  .split-big-text { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 110px; line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(184,224,74,0.2); text-transform: uppercase; position: relative; z-index: 1; text-align: center; padding: 40px; }
-  .split-handwrite { position: absolute; bottom: 32px; left: 32px; font-family: 'Caveat', cursive; font-size: 20px; color: rgba(184,224,74,0.5); transform: rotate(-5deg); z-index: 2; }
+  .split-big-text { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 110px; line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(184,224,74,0.15); text-transform: uppercase; position: relative; z-index: 1; text-align: center; padding: 40px; }
   .split-content { background: var(--navy); padding: 56px 48px; display: flex; flex-direction: column; justify-content: center; border-left: 1px solid rgba(61,58,140,0.2); }
-  .section-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--navy); background: var(--green); display: inline-block; padding: 4px 12px; margin-bottom: 16px; }
-  .section-tag-light { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--green); display: inline-block; margin-bottom: 16px; }
   .split-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 52px; line-height: 0.95; color: var(--beige); text-transform: uppercase; margin-bottom: 20px; }
   .split-body { font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 32px; }
-  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
-  .pill { display: inline-flex; align-items: center; background: var(--green); color: var(--navy); font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 2px; padding: 10px 20px; border-radius: 999px; text-decoration: none; transition: all 0.2s; }
-  .pill:hover { background: #a6cc3e; transform: translateY(-2px); }
-  .pill-outline { background: transparent; color: var(--beige); border: 1.5px solid rgba(216,212,200,0.25); }
-  .pill-outline:hover { border-color: var(--beige); background: transparent; }
 
-  /* ZONES */
-  .zones { background: var(--beige); padding: 80px 40px; }
-  .zones-header { margin-bottom: 48px; position: relative; }
-  .zones-handwrite { font-family: 'Caveat', cursive; font-size: 20px; color: rgba(26,26,46,0.45); margin-top: 8px; display: block; }
-  .section-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(44px, 6vw, 68px); color: var(--navy); text-transform: uppercase; line-height: 0.9; }
-  .section-title-light { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(44px, 6vw, 68px); color: var(--beige); text-transform: uppercase; line-height: 0.9; }
+  /* ZONES PREVIEW */
   .zones-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-  .zone-card { background: var(--indigo); padding: 32px 24px; }
+  .zone-card { background: var(--indigo); padding: 28px 24px; }
   .zone-card:nth-child(even) { background: var(--navy); }
-  .zone-num { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 32px; font-weight: 900; color: var(--green); margin-bottom: 12px; line-height: 1; text-shadow: 0 0 20px rgba(184,224,74,0.3); }
-  .zone-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 22px; font-weight: 700; color: #ffffff; text-transform: uppercase; margin-bottom: 8px; line-height: 1.1; letter-spacing: 0.5px; }
-  .zone-text { font-size: 12px; color: #c8c4ff; line-height: 1.6; }
+  .zone-num { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 28px; font-weight: 900; color: var(--green); margin-bottom: 10px; }
+  .zone-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 20px; font-weight: 700; color: var(--beige); text-transform: uppercase; margin-bottom: 6px; }
+  .zone-text { font-size: 12px; color: var(--light-indigo); line-height: 1.6; }
   .zone-card:nth-child(even) .zone-text { color: var(--muted); }
 
-  /* WHY */
-  .why { background: var(--navy); padding: 80px 40px; }
-  .why-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; flex-wrap: wrap; gap: 20px; }
-  .why-sub { font-size: 13px; color: #555; max-width: 200px; line-height: 1.7; text-align: right; }
-  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .card { background: var(--indigo); padding: 36px 32px; }
-  .card-num { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 64px; font-weight: 900; color: var(--green); line-height: 1; margin-bottom: 14px; }
-  .card-title { font-size: 16px; font-weight: 700; color: var(--beige); margin-bottom: 10px; }
-  .card-text { font-size: 13px; color: var(--light-indigo); line-height: 1.7; }
-
-  /* TICKER 2 */
-  .ticker-wrap-dark { background: var(--navy); overflow: hidden; padding: 12px 0; border-top: 1px solid #1f1f35; border-bottom: 1px solid #1f1f35; }
-  .ticker-dark { display: flex; width: max-content; animation: ticker 32s linear infinite; }
-  .ticker-dark-item { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 3px; color: rgba(216,212,200,0.25); padding: 0 28px; white-space: nowrap; }
-  .ticker-dark-item span { color: var(--green); }
-
-  /* PROGRAMME */
-  .agenda { background: var(--beige); padding: 80px 40px; }
-  .agenda-header { margin-bottom: 48px; }
-  .agenda-handwrite { font-family: 'Caveat', cursive; font-size: 20px; color: rgba(26,26,46,0.45); margin-top: 8px; display: block; }
-  .day { border-top: 1.5px solid rgba(26,26,46,0.15); padding: 28px 0; display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start; }
-  .day-time { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--indigo); min-width: 100px; line-height: 2; font-weight: 700; }
-  .day-badge { display: inline-block; background: var(--navy); color: var(--beige); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; padding: 4px 10px; margin-bottom: 8px; }
-  .day-title { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
-  .day-sub { font-size: 13px; color: #666; line-height: 1.7; max-width: 480px; }
-
-  /* WHO */
-  .who { background: var(--navy); padding: 80px 40px; }
-  .who-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
-  .who-left { padding-right: 60px; }
-  .who-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(52px, 7vw, 80px); color: var(--beige); text-transform: uppercase; line-height: 0.9; margin-bottom: 24px; }
-  .who-body { font-size: 14px; color: var(--muted); line-height: 1.9; margin-bottom: 40px; }
-  .team { display: flex; flex-direction: column; gap: 24px; }
-  .team-member { border-left: 2px solid var(--green); padding-left: 20px; }
-  .team-name { font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: var(--beige); margin-bottom: 4px; }
-  .team-role { font-size: 13px; color: var(--muted); line-height: 1.6; }
-  .who-right { background: rgba(61,58,140,0.15); border-left: 1px solid rgba(61,58,140,0.2); display: flex; align-items: center; justify-content: center; padding: 60px 48px; position: relative; overflow: hidden; }
-  .who-logo-bg { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 160px; color: transparent; -webkit-text-stroke: 1px rgba(184,224,74,0.06); text-transform: uppercase; position: absolute; line-height: 1; }
-  .who-quote { position: relative; z-index: 1; text-align: center; }
-  .who-quote-text { font-family: 'Caveat', cursive; font-size: 28px; color: var(--beige); line-height: 1.5; margin-bottom: 16px; }
-  .who-quote-sub { font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 2px; color: var(--green); }
+  /* WHO PREVIEW */
+  .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .who-card { background: rgba(61,58,140,0.15); border: 1px solid rgba(61,58,140,0.2); padding: 32px 28px; }
+  .who-name { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; color: var(--beige); margin-bottom: 6px; }
+  .who-role { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .who-bar { width: 32px; height: 2px; background: var(--green); margin-bottom: 16px; }
 
   /* SPONSORS */
-  .sponsors { background: var(--beige); padding: 80px 40px; }
-  .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2px; margin-top: 40px; }
-  .sponsor-box { background: #ccc9bc; padding: 28px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s; cursor: pointer; }
+  .sponsors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 2px; margin-top: 40px; }
+  .sponsor-box { background: #ccc9bc; padding: 28px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: all 0.2s; }
   .sponsor-box:hover { background: var(--navy); }
   .sponsor-box:hover .sponsor-name { color: var(--beige); }
   .sponsor-box:hover .sponsor-cat { color: var(--green); }
-  .sponsor-name { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 2px; color: #666; transition: color 0.2s; text-align: center; }
-  .sponsor-cat { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 1px; color: #999; margin-top: 4px; transition: color 0.2s; text-align: center; }
+  .sponsor-name { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; color: #777; transition: color 0.2s; text-align: center; }
+  .sponsor-cat { font-family: 'Space Mono', monospace; font-size: 8px; letter-spacing: 1px; color: #aaa; margin-top: 4px; transition: color 0.2s; }
 
-  /* CTA */
-  .cta { background: var(--indigo); padding: 80px 40px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 48px; position: relative; overflow: hidden; }
-  .cta-handwrite { position: absolute; top: 28px; right: 440px; font-family: 'Caveat', cursive; font-size: 20px; color: rgba(216,212,200,0.2); transform: rotate(-6deg); pointer-events: none; }
-  .cta-left { max-width: 480px; }
-  .cta-tag { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; color: var(--light-indigo); margin-bottom: 16px; }
-  .cta-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(52px, 7vw, 80px); color: var(--beige); text-transform: uppercase; line-height: 0.9; margin-bottom: 20px; }
-  .cta-sub { font-size: 14px; color: var(--light-indigo); line-height: 1.8; }
-  .form-box { background: var(--beige); padding: 40px; min-width: 300px; flex: 1; max-width: 400px; position: relative; z-index: 1; }
-  .form-title { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 24px; letter-spacing: 2px; }
-  .input { width: 100%; padding: 13px 16px; border: 1.5px solid rgba(61,58,140,0.25); background: var(--cream); color: var(--navy); font-family: 'Space Grotesk', sans-serif; font-size: 14px; margin-bottom: 12px; outline: none; transition: border-color 0.2s; }
-  .input:focus { border-color: var(--indigo); }
-  .form-btn { width: 100%; background: var(--green); color: var(--navy); padding: 15px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; border: none; cursor: pointer; border-radius: 999px; margin-top: 4px; transition: all 0.2s; }
-  .form-btn:hover { background: #a6cc3e; transform: translateY(-2px); }
-
-  /* FOOTER */
-  .footer { background: var(--navy); border-top: 1px solid #1f1f35; padding: 48px 40px 32px; }
-  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 48px; }
-  .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 36px; font-weight: 900; color: var(--beige); margin-bottom: 6px; }
-  .footer-tagline { font-family: 'Caveat', cursive; font-size: 16px; color: rgba(216,212,200,0.6); }
-  .footer-col-title { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 3px; color: #888; margin-bottom: 16px; }
-  .footer-links { display: flex; flex-direction: column; gap: 10px; }
-  .footer-links a { font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; letter-spacing: 1px; text-decoration: none; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--green); }
-  .footer-social { display: flex; gap: 10px; flex-wrap: wrap; }
-  .social-btn { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; letter-spacing: 1px; padding: 10px 16px; text-decoration: none; transition: all 0.2s; }
-  .social-btn:hover { background: var(--green); color: var(--navy); border-color: var(--green); }
-  .footer-bottom { border-top: 1px solid #1a1a2a; padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-  .footer-copy { font-family: 'Space Mono', monospace; font-size: 10px; color: #666; letter-spacing: 1px; }
-
-  /* MOBILE MENU */
-  .mobile-menu { display: none; position: fixed; inset: 0; background: var(--navy); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 44px; font-weight: 900; color: var(--beige); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
-  .mobile-menu a:hover { color: var(--green); }
-  .mobile-close { position: absolute; top: 20px; right: 24px; font-family: 'Space Mono', monospace; font-size: 11px; color: #444; cursor: pointer; letter-spacing: 2px; }
-
-  /* FADE IN */
-  .fi { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-  .fi.vis { opacity: 1; transform: translateY(0); }
-  .fi2 { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s; }
-  .fi2.vis { opacity: 1; transform: translateY(0); }
-  .fi3 { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s; }
-  .fi3.vis { opacity: 1; transform: translateY(0); }
-
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     .zones-grid { grid-template-columns: repeat(2, 1fr); }
-    .cards { grid-template-columns: 1fr; }
-    .who-inner { grid-template-columns: 1fr; }
-    .who-right { min-height: 220px; }
-    .who-left { padding-right: 0; margin-bottom: 0; }
+    .who-grid { grid-template-columns: 1fr; }
     .split { grid-template-columns: 1fr; }
-    .split-visual { min-height: 220px; }
+    .split-visual { min-height: 200px; }
   }
   @media (max-width: 768px) {
-    .nav-links, .nav-cta { display: none; }
-    .nav-hamburger { display: flex; }
-    .nav, .lang-bar { padding-left: 24px; padding-right: 24px; }
     .hero-content { padding: 0 24px 48px; }
-    .hero-handwrite-1, .hero-handwrite-2 { display: none; }
-    .zones, .why, .agenda, .cta, .sponsors, .who { padding: 56px 24px; }
     .countdown-bar { padding: 24px; flex-direction: column; }
     .ticket-banner { padding: 24px; }
     .ticket-price { font-size: 52px; }
-    .ticket-handwrite { display: none; }
-    .footer { padding: 40px 24px 24px; }
     .stats { flex-wrap: wrap; }
     .stat { min-width: 50%; border-right: none; border-bottom: 1.5px solid var(--navy); }
     .stat:nth-child(odd) { border-right: 1.5px solid var(--navy); }
-    .why-sub { text-align: left; max-width: 100%; }
+    .runner-types-inner { justify-content: flex-start; }
+    .signup-form { flex-direction: column; }
+    .signup-input { border-right: 1.5px solid rgba(255,255,255,0.1); }
     .split-content { padding: 40px 28px; }
-    .form-box { max-width: 100%; }
-    .cta-handwrite { display: none; }
-  }
-  @media (max-width: 480px) {
-    .zones-grid { grid-template-columns: 1fr; }
-    .hero-btns { flex-direction: column; }
-    .countdown-units { gap: 10px; }
-    .countdown-sep { display: none; }
     .sponsors-grid { grid-template-columns: repeat(2, 1fr); }
+    .zones-grid { grid-template-columns: repeat(2, 1fr); }
   }
+  @media (max-width: 480px) { .countdown-sep { display: none; } }
 </style>
 </head>
 <body>
@@ -278,71 +141,170 @@
   <div class="ticker">
     <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
     <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
-    <span class="ticker-item" data-fr="ROUTE · SENTIER · ENDURANCE" data-en="ROAD · TRAIL · ENDURANCE">ROUTE · SENTIER · ENDURANCE</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
     <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
-    <span class="ticker-item" data-fr="50+ MARQUES" data-en="50+ BRANDS">50+ MARQUES</span>
     <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
     <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
     <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
-    <span class="ticker-item" data-fr="ROUTE · SENTIER · ENDURANCE" data-en="ROAD · TRAIL · ENDURANCE">ROUTE · SENTIER · ENDURANCE</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
     <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
-    <span class="ticker-item" data-fr="50+ MARQUES" data-en="50+ BRANDS">50+ MARQUES</span>
     <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
   </div>
 </div>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <span class="mobile-close" onclick="toggleMenu()">FERMER ✕</span>
-  <a href="#zones" onclick="toggleMenu()" data-fr="Zones" data-en="Zones">Zones</a>
-  <a href="#programme" onclick="toggleMenu()" data-fr="Programme" data-en="Schedule">Programme</a>
-  <a href="#equipe" onclick="toggleMenu()" data-fr="L'équipe" data-en="Team">L'équipe</a>
-  <a href="#inscription" onclick="toggleMenu()" data-fr="Billets" data-en="Tickets">Billets</a>
+  <span class="mobile-close" onclick="toggleMenu()">✕</span>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+  <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+  <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
 </div>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="#" class="nav-logo" data-fr="ECM" data-en="ECM">ECM</a>
-  <div class="nav-links">
-    <a href="#zones" data-fr="ZONES" data-en="ZONES">ZONES</a>
-    <a href="#programme" data-fr="PROGRAMME" data-en="SCHEDULE">PROGRAMME</a>
-    <a href="#equipe" data-fr="L'ÉQUIPE" data-en="TEAM">L'ÉQUIPE</a>
-    <a href="#sponsors" data-fr="PARTENAIRES" data-en="PARTNERS">PARTENAIRES</a>
-    <a href="#inscription" data-fr="CONTACT" data-en="CONTACT">CONTACT</a>
-  </div>
-  <div class="nav-right">
-    <a href="#inscription" class="nav-cta" data-fr="S'INSCRIRE ↗" data-en="REGISTER ↗">S'INSCRIRE ↗</a>
-    <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</a>
+    <div class="nav-links">
+
+      <!-- HOME -->
+      <div class="nav-item">
+        <a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
+      </div>
+
+      <!-- PROGRAMME MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="programme.html" data-fr="PROGRAMME ▾" data-en="SCHEDULE ▾">PROGRAMME ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="HORAIRE" data-en="SCHEDULE">HORAIRE</div>
+            <a href="programme.html#jour1" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 1 — EXPO" data-en="DAY 1 — EXPO">JOUR 1 — EXPO</div>
+              <div class="mega-link-desc" data-fr="Ouverture, marques, démonstrations" data-en="Opening, brands, demos">Ouverture, marques, démonstrations</div>
+            </a>
+            <a href="programme.html#jour2" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 2 — SENTIER & ENDURANCE" data-en="DAY 2 — TRAIL & ENDURANCE">JOUR 2 — SENTIER & ENDURANCE</div>
+              <div class="mega-link-desc" data-fr="Ateliers, conférences, course communautaire" data-en="Workshops, talks, community run">Ateliers, conférences, course communautaire</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="ZONES" data-en="ZONES">ZONES</div>
+            <a href="programme.html#zones" class="mega-link">
+              <div class="mega-link-title" data-fr="8 ZONES THÉMATIQUES" data-en="8 THEMED ZONES">8 ZONES THÉMATIQUES</div>
+              <div class="mega-link-desc" data-fr="Vêtements, tech, nutrition, récupération..." data-en="Apparel, tech, nutrition, recovery...">Vêtements, tech, nutrition, récupération...</div>
+            </a>
+            <a href="programme.html#conferences" class="mega-link">
+              <div class="mega-link-title" data-fr="CONFÉRENCES" data-en="SPEAKER STAGE">CONFÉRENCES</div>
+              <div class="mega-link-desc" data-fr="Experts, entraîneurs, athlètes d'élite" data-en="Experts, coaches, elite athletes">Experts, entraîneurs, athlètes d'élite</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="about.html" data-fr="À PROPOS ▾" data-en="ABOUT ▾">À PROPOS ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="L'ÉVÉNEMENT" data-en="THE EVENT">L'ÉVÉNEMENT</div>
+            <a href="about.html#mission" class="mega-link">
+              <div class="mega-link-title" data-fr="NOTRE MISSION" data-en="OUR MISSION">NOTRE MISSION</div>
+              <div class="mega-link-desc" data-fr="Pourquoi on a créé cet expo" data-en="Why we created this expo">Pourquoi on a créé cet expo</div>
+            </a>
+            <a href="about.html#equipe" class="mega-link">
+              <div class="mega-link-title" data-fr="L'ÉQUIPE" data-en="THE TEAM">L'ÉQUIPE</div>
+              <div class="mega-link-desc" data-fr="Camille, Geoffroy, Vincent" data-en="Camille, Geoffroy, Vincent">Camille, Geoffroy, Vincent</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="PARTICIPER" data-en="GET INVOLVED">PARTICIPER</div>
+            <a href="volunteer.html" class="mega-link">
+              <div class="mega-link-title" data-fr="BÉNÉVOLAT" data-en="VOLUNTEER">BÉNÉVOLAT</div>
+              <div class="mega-link-desc" data-fr="Rejoignez notre équipe de bénévoles" data-en="Join our volunteer team">Rejoignez notre équipe de bénévoles</div>
+            </a>
+            <a href="contact.html#partenaires" class="mega-link">
+              <div class="mega-link-title" data-fr="PARTENAIRES" data-en="PARTNERS">PARTENAIRES</div>
+              <div class="mega-link-desc" data-fr="Devenez exposant ou commanditaire" data-en="Become an exhibitor or sponsor">Devenez exposant ou commanditaire</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item"><a href="volunteer.html" data-fr="BÉNÉVOLES" data-en="VOLUNTEER">BÉNÉVOLES</a></div>
+      <div class="nav-item"><a href="faq.html">FAQ</a></div>
+      <div class="nav-item"><a href="contact.html" data-fr="CONTACT" data-en="CONTACT">CONTACT</a></div>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#signup" class="nav-cta" data-fr="MISES À JOUR ↗" data-en="UPDATES ↗">MISES À JOUR ↗</a>
+      <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-circle"></div>
-  <div class="hero-handwrite-1" data-fr="on court ensemble." data-en="We run together.">on court ensemble.</div>
-  <div class="hero-handwrite-2" data-fr="avril 2027 — mtl" data-en="April 2027 — MTL">avril 2027 — mtl</div>
   <div class="hero-content">
-    <div class="hero-eyebrow" id="eyebrow" data-fr="MONTRÉAL — PREMIER EXPO COURSE À PIED" data-en="MONTREAL — MTL RUN EXPO">MONTRÉAL — PREMIER EXPO COURSE À PIED</div>
+    <div class="hero-eyebrow" id="eyebrow" data-fr="MONTRÉAL — PREMIER EXPO COURSE À PIED" data-en="MONTREAL — FIRST DEDICATED RUNNING EXPO">MONTRÉAL — PREMIER EXPO COURSE À PIED</div>
     <div class="hero-title" id="heroTitle">
       <span data-fr="EXPO" data-en="MTL">EXPO</span><br>
       <span class="accent" data-fr="COURIR" data-en="RUN">COURIR</span><br>
       <span class="outline" data-fr="MTL" data-en="EXPO">MTL</span>
-      <span class="hero-handwrite-hero" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</span>
     </div>
-    <div class="hero-meta" id="heroMeta">
-      <div class="meta-pill"><div class="meta-label" data-fr="LIEU" data-en="LOCATION">LIEU</div><div class="meta-val">MONTRÉAL, QC</div></div>
-      <div class="meta-pill"><div class="meta-label" data-fr="DATE" data-en="DATE">DATE</div><div class="meta-val" data-fr="AVRIL 2027" data-en="APRIL 2027">AVRIL 2027</div></div>
-      <div class="meta-pill"><div class="meta-label" data-fr="BILLET" data-en="TICKET">BILLET</div><div class="meta-val">15$</div></div>
-      <div class="meta-pill"><div class="meta-label" data-fr="DURÉE" data-en="DURATION">DURÉE</div><div class="meta-val" data-fr="2 JOURS" data-en="2 DAYS">2 JOURS</div></div>
-    </div>
-    <div class="hero-btns" id="heroBtns">
-      <a href="#inscription" class="btn-primary" data-fr="OBTENIR DES BILLETS ↗" data-en="GET TICKETS ↗">OBTENIR DES BILLETS ↗</a>
-      <a href="#programme" class="btn-outline" data-fr="VOIR LE PROGRAMME" data-en="VIEW SCHEDULE">VOIR LE PROGRAMME</a>
+    <div class="hero-sub" id="heroSub" data-fr="Toute la communauté de course de Montréal — route, sentier, ultra, piste — réunie pour la première fois." data-en="The entire Montreal running community — road, trail, ultra, track — brought together for the first time.">Toute la communauté de course de Montréal — route, sentier, ultra, piste — réunie pour la première fois.</div>
+
+    <!-- MAILCHIMP EMAIL SIGNUP -->
+    <div class="hero-signup" id="heroSignup" id="signup">
+      <span class="signup-label" data-fr="RESTEZ INFORMÉ — SOYEZ LES PREMIERS AU COURANT" data-en="STAY INFORMED — BE THE FIRST TO KNOW">RESTEZ INFORMÉ — SOYEZ LES PREMIERS AU COURANT</span>
+      <form class="signup-form" action="https://expocourirmtl.us3.list-manage.com/subscribe/post?u=7fe7dbd24e7d56eac640e1bd0&id=2d161b6c83&f_id=00e3cce0f0" method="post" target="_blank">
+        <input class="signup-input" type="email" name="EMAIL" data-placeholder-fr="Votre courriel" data-placeholder-en="Your email" placeholder="Votre courriel" required />
+        <input type="text" name="b_7fe7dbd24e7d56eac640e1bd0_2d161b6c83" tabindex="-1" value="" style="position:absolute;left:-5000px;" aria-hidden="true">
+        <button type="submit" class="signup-btn" data-fr="S'INSCRIRE ↗" data-en="SUBSCRIBE ↗">S'INSCRIRE ↗</button>
+      </form>
+      <p class="signup-note" data-fr="Pas de spam. Mises à jour importantes seulement." data-en="No spam. Important updates only.">Pas de spam. Mises à jour importantes seulement.</p>
     </div>
   </div>
 </section>
+
+<!-- RUNNER TYPES -->
+<div class="runner-types">
+  <div class="runner-types-inner">
+    <div class="runner-type">
+      <div class="runner-type-icon">01</div>
+      <div class="runner-type-name" data-fr="ROUTE" data-en="ROAD">ROUTE</div>
+      <div class="runner-type-desc" data-fr="Bitume & asphalte" data-en="Pavement & asphalt">Bitume & asphalte</div>
+    </div>
+    <div class="runner-type">
+      <div class="runner-type-icon">02</div>
+      <div class="runner-type-name" data-fr="SENTIER" data-en="TRAIL">SENTIER</div>
+      <div class="runner-type-desc" data-fr="Montagne & forêt" data-en="Mountain & forest">Montagne & forêt</div>
+    </div>
+    <div class="runner-type">
+      <div class="runner-type-icon">03</div>
+      <div class="runner-type-name">ULTRA</div>
+      <div class="runner-type-desc" data-fr="Au-delà des limites" data-en="Beyond the limits">Au-delà des limites</div>
+    </div>
+    <div class="runner-type">
+      <div class="runner-type-icon">04</div>
+      <div class="runner-type-name" data-fr="PISTE" data-en="TRACK">PISTE</div>
+      <div class="runner-type-desc" data-fr="Vitesse & performance" data-en="Speed & performance">Vitesse & performance</div>
+    </div>
+    <div class="runner-type">
+      <div class="runner-type-icon">05</div>
+      <div class="runner-type-name" data-fr="ENDURANCE" data-en="ENDURANCE">ENDURANCE</div>
+      <div class="runner-type-desc" data-fr="Marathon & +42km" data-en="Marathon & 42km+">Marathon & +42km</div>
+    </div>
+    <div class="runner-type">
+      <div class="runner-type-icon">06</div>
+      <div class="runner-type-name" data-fr="PLEIN AIR" data-en="OUTDOOR">PLEIN AIR</div>
+      <div class="runner-type-desc" data-fr="Nature & aventure" data-en="Nature & adventure">Nature & aventure</div>
+    </div>
+  </div>
+</div>
 
 <!-- COUNTDOWN -->
 <div class="countdown-bar">
@@ -360,22 +322,24 @@
 
 <!-- TICKET BANNER -->
 <div class="ticket-banner">
-
-  <div class="ticket-left">
+  <div style="display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
     <div class="ticket-price">15$</div>
     <div>
       <div class="ticket-title" data-fr="BILLET 2 JOURS — ACCÈS COMPLET" data-en="2-DAY PASS — FULL ACCESS">BILLET 2 JOURS — ACCÈS COMPLET</div>
-      <div class="ticket-detail" data-fr="Accès aux deux jours d'exposition, conférences, ateliers et course communautaire." data-en="Access to both expo days, talks, workshops and community run.">Accès aux deux jours d'exposition, conférences, ateliers et course communautaire.</div>
-      <div class="ticket-includes">
-        <span class="ticket-tag" data-fr="ACCÈS EXPO" data-en="EXPO FLOOR">ACCÈS EXPO</span>
+      <div class="ticket-detail" data-fr="Accès aux deux jours d'exposition, conférences, ateliers, piste de course et course communautaire." data-en="Access to both expo days, talks, workshops, running track and community run.">Accès aux deux jours d'exposition, conférences, ateliers, piste de course et course communautaire.</div>
+      <div class="ticket-tags">
+        <span class="ticket-tag" data-fr="EXPO FLOOR" data-en="EXPO FLOOR">EXPO FLOOR</span>
         <span class="ticket-tag" data-fr="CONFÉRENCES" data-en="TALKS">CONFÉRENCES</span>
         <span class="ticket-tag" data-fr="ATELIERS" data-en="WORKSHOPS">ATELIERS</span>
-        <span class="ticket-tag" data-fr="COURSE COMM." data-en="COMM. RUN">COURSE COMM.</span>
+        <span class="ticket-tag" data-fr="PISTE" data-en="TRACK">PISTE</span>
         <span class="ticket-tag" data-fr="ZONE BOUFFE" data-en="FOOD ZONE">ZONE BOUFFE</span>
       </div>
     </div>
   </div>
-  <a href="#inscription" class="btn-primary" data-fr="ACHETER MON BILLET ↗" data-en="BUY MY TICKET ↗">ACHETER MON BILLET ↗</a>
+  <div style="display:flex;flex-direction:column;gap:10px;align-items:flex-start;">
+    <a href="#signup" class="btn-primary" data-fr="MISES À JOUR ↗" data-en="GET UPDATES ↗">MISES À JOUR ↗</a>
+    <span style="font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;color:#aaa;" data-fr="Billetterie bientôt disponible" data-en="Ticketing coming soon">Billetterie bientôt disponible</span>
+  </div>
 </div>
 
 <!-- STATS -->
@@ -383,145 +347,108 @@
   <div class="stat"><div class="stat-num" data-target="50">0</div><div class="stat-label" data-fr="MARQUES" data-en="BRANDS">MARQUES</div></div>
   <div class="stat"><div class="stat-num" data-target="2">0</div><div class="stat-label" data-fr="JOURS" data-en="DAYS">JOURS</div></div>
   <div class="stat"><div class="stat-num" data-target="1000">0</div><div class="stat-label" data-fr="COUREURS ATTENDUS" data-en="EXPECTED RUNNERS">COUREURS ATTENDUS</div></div>
-  <div class="stat"><div class="stat-num">8</div><div class="stat-label" data-fr="ZONES THÉMATIQUES" data-en="THEMED ZONES">ZONES THÉMATIQUES</div></div>
+  <div class="stat"><div class="stat-num">8</div><div class="stat-label" data-fr="ZONES" data-en="ZONES">ZONES</div></div>
 </div>
 
-<!-- SPLIT -->
+<!-- ABOUT SPLIT -->
 <div class="split">
   <div class="split-visual">
     <div class="split-track"></div>
     <div class="split-big-text" data-fr="COURIR<br>MTL<br>2027" data-en="RUN<br>MTL<br>2027">COURIR<br>MTL<br>2027</div>
-    <div class="split-handwrite" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</div>
   </div>
   <div class="split-content">
-    <div class="section-tag-light fi" data-fr="À PROPOS DE L'ÉVÉNEMENT" data-en="ABOUT THE EVENT">À PROPOS DE L'ÉVÉNEMENT</div>
-    <div class="split-title fi2" data-fr="Fait pour les coureurs de Montréal." data-en="Built for Montreal runners.">Fait pour les coureurs de Montréal.</div>
-    <div class="split-body fi3" data-fr="La première expo entièrement dédié à la course à pied à Montréal — accueillant les coureurs sur route, en sentier, d'endurance et de plein air. Découvrez de nouvelles marques, connectez-vous avec la communauté, apprenez des meilleures." data-en="Montreal's first expo entirely dedicated to running — welcoming road, trail, endurance, and outdoor runners. Discover new brands, connect with the community, learn from the best.">La première expo entièrement dédié à la course à pied à Montréal — accueillant les coureurs sur route, en sentier, d'endurance et de plein air. Découvrez de nouvelles marques, connectez-vous avec la communauté, apprenez des meilleures.</div>
+    <div class="section-tag-light fi" data-fr="À PROPOS" data-en="ABOUT">À PROPOS</div>
+    <div class="split-title fi" data-fr="Fait pour les coureurs de Montréal." data-en="Built for Montreal runners.">Fait pour les coureurs de Montréal.</div>
+    <div class="split-body fi" data-fr="La première expo entièrement dédiée à la course à pied à Montréal — accueillant les coureurs sur route, en sentier, d'endurance et de plein air. Découvrez de nouvelles marques, connectez-vous avec la communauté, apprenez des meilleures." data-en="Montreal's first expo entirely dedicated to running — welcoming road, trail, endurance, and outdoor runners. Discover new brands, connect with the community, learn from the best.">La première expo entièrement dédiée à la course à pied à Montréal.</div>
     <div class="btn-group fi">
-      <a href="#equipe" class="pill" data-fr="QUI SOMMES-NOUS ↗" data-en="WHO WE ARE ↗">QUI SOMMES-NOUS ↗</a>
-      <a href="#inscription" class="pill pill-outline" data-fr="INFOLETTRE" data-en="NEWSLETTER">INFOLETTRE</a>
+      <a href="about.html" class="btn-primary" data-fr="QUI SOMMES-NOUS ↗" data-en="WHO WE ARE ↗">QUI SOMMES-NOUS ↗</a>
+      <a href="programme.html" class="btn-outline" data-fr="PROGRAMME" data-en="SCHEDULE">PROGRAMME</a>
     </div>
   </div>
 </div>
 
-<!-- ZONES -->
-<section class="zones" id="zones">
-  <div class="zones-header">
-    <div class="section-tag fi" data-fr="CE QU'ON OFFRE" data-en="WHAT WE OFFER">CE QU'ON OFFRE</div>
-    <div class="section-title fi" data-fr="Les zones de l'expo." data-en="Expo zones.">Les zones de l'expo.</div>
-    <span class="zones-handwrite fi" data-fr="tout sous un même toit!" data-en="All under one roof!">tout sous un même toit!</span>
-  </div>
+<!-- ZONES PREVIEW -->
+<section class="section section-beige">
+  <div class="section-tag fi" data-fr="CE QU'ON OFFRE" data-en="WHAT WE OFFER">CE QU'ON OFFRE</div>
+  <div class="section-title fi" data-fr="8 zones. Tout sous un même toit." data-en="8 zones. All under one roof.">8 zones. Tout sous un même toit.</div>
   <div class="zones-grid">
-    <div class="zone-card fi"><div class="zone-num">01</div><div class="zone-title" data-fr="Vêtements & Chaussures" data-en="Apparel & Shoes">Vêtements & Chaussures</div><div class="zone-text" data-fr="Les meilleures marques de vêtements et chaussures de course, des grandes aux locales." data-en="The best running apparel and shoe brands, from global to local.">Les meilleures marques de vêtements et chaussures de course, des grandes aux locales.</div></div>
-    <div class="zone-card fi"><div class="zone-num">02</div><div class="zone-title" data-fr="Technologie" data-en="Technology">Technologie</div><div class="zone-text" data-fr="GPS, montres, applications et tout ce qui propulse la performance moderne." data-en="GPS, watches, apps and everything that powers modern performance.">GPS, montres, applications et tout ce qui propulse la performance moderne.</div></div>
-    <div class="zone-card fi"><div class="zone-num">03</div><div class="zone-title" data-fr="Nutrition" data-en="Nutrition">Nutrition</div><div class="zone-text" data-fr="Gels, boissons, barres et compléments alimentaires pour coureurs de tous niveaux." data-en="Gels, drinks, bars and supplements for runners of all levels.">Gels, boissons, barres et compléments alimentaires pour coureurs de tous niveaux.</div></div>
-    <div class="zone-card fi"><div class="zone-num">04</div><div class="zone-title" data-fr="Récupération" data-en="Recovery">Récupération</div><div class="zone-text" data-fr="Rouleaux de massage, thérapies et tout pour récupérer plus vite." data-en="Foam rollers, therapies and everything for faster recovery.">Rouleaux de massage, thérapies et tout pour récupérer plus vite.</div></div>
-    <div class="zone-card fi"><div class="zone-num">05</div><div class="zone-title" data-fr="Piste de Course" data-en="Running Track">Piste de Course</div><div class="zone-text" data-fr="Testez les chaussures en conditions réelles sur notre piste intérieure aménagée." data-en="Test shoes in real conditions on our specially set-up indoor track.">Testez les chaussures en conditions réelles sur notre piste intérieure aménagée.</div></div>
-    <div class="zone-card fi"><div class="zone-num">06</div><div class="zone-title" data-fr="Run Clubs" data-en="Run Clubs">Run Clubs</div><div class="zone-text" data-fr="Découvrez les clubs de course de Montréal, rejoignez une communauté." data-en="Discover Montreal's run clubs and join a community.">Découvrez les clubs de course de Montréal, rejoignez une communauté.</div></div>
-    <div class="zone-card fi"><div class="zone-num">07</div><div class="zone-title" data-fr="Conférences" data-en="Speaker Stage">Conférences</div><div class="zone-text" data-fr="Scène principale avec conférenciers invités, entraîneurs et athlètes d'élite." data-en="Main stage with guest speakers, coaches and elite athletes.">Scène principale avec conférenciers invités, entraîneurs et athlètes d'élite.</div></div>
-    <div class="zone-card fi"><div class="zone-num">08</div><div class="zone-title" data-fr="Bouffe & Social" data-en="Food & Social">Bouffe & Social</div><div class="zone-text" data-fr="Zone restauration et espace social pour se retrouver et célébrer la course." data-en="Food zone and social space to meet and celebrate running.">Zone restauration et espace social pour se retrouver et célébrer la course.</div></div>
+    <div class="zone-card fi"><div class="zone-num">01</div><div class="zone-title" data-fr="Vêtements & Chaussures" data-en="Apparel & Shoes">Vêtements & Chaussures</div><div class="zone-text" data-fr="Les meilleures marques locales et internationales." data-en="The best local and international brands.">Les meilleures marques locales et internationales.</div></div>
+    <div class="zone-card fi"><div class="zone-num">02</div><div class="zone-title" data-fr="Technologie" data-en="Technology">Technologie</div><div class="zone-text" data-fr="GPS, montres, applications et performance moderne." data-en="GPS, watches, apps and modern performance.">GPS, montres, applications et performance moderne.</div></div>
+    <div class="zone-card fi"><div class="zone-num">03</div><div class="zone-title" data-fr="Nutrition" data-en="Nutrition">Nutrition</div><div class="zone-text" data-fr="Gels, boissons et compléments pour coureurs de tous niveaux." data-en="Gels, drinks and supplements for all runners.">Gels, boissons et compléments pour coureurs de tous niveaux.</div></div>
+    <div class="zone-card fi"><div class="zone-num">04</div><div class="zone-title" data-fr="Récupération" data-en="Recovery">Récupération</div><div class="zone-text" data-fr="Thérapies et outils pour récupérer plus vite." data-en="Therapies and tools for faster recovery.">Thérapies et outils pour récupérer plus vite.</div></div>
+    <div class="zone-card fi"><div class="zone-num">05</div><div class="zone-title" data-fr="Piste de Course" data-en="Running Track">Piste de Course</div><div class="zone-text" data-fr="Testez les chaussures sur notre piste intérieure." data-en="Test shoes on our indoor track.">Testez les chaussures sur notre piste intérieure.</div></div>
+    <div class="zone-card fi"><div class="zone-num">06</div><div class="zone-title" data-fr="Run Clubs" data-en="Run Clubs">Run Clubs</div><div class="zone-text" data-fr="Rejoignez les clubs de course de Montréal." data-en="Join Montreal's running clubs.">Rejoignez les clubs de course de Montréal.</div></div>
+    <div class="zone-card fi"><div class="zone-num">07</div><div class="zone-title" data-fr="Conférences" data-en="Speaker Stage">Conférences</div><div class="zone-text" data-fr="Entraîneurs, experts et athlètes d'élite." data-en="Coaches, experts and elite athletes.">Entraîneurs, experts et athlètes d'élite.</div></div>
+    <div class="zone-card fi"><div class="zone-num">08</div><div class="zone-title" data-fr="Bouffe & Social" data-en="Food & Social">Bouffe & Social</div><div class="zone-text" data-fr="Zone restauration et espace communautaire." data-en="Food zone and community space.">Zone restauration et espace communautaire.</div></div>
+  </div>
+  <div style="margin-top:32px;">
+    <a href="programme.html" class="btn-primary" data-fr="VOIR TOUT LE PROGRAMME ↗" data-en="SEE FULL SCHEDULE ↗">VOIR TOUT LE PROGRAMME ↗</a>
   </div>
 </section>
 
-<!-- TICKER 2 -->
+<!-- TICKER DARK -->
 <div class="ticker-wrap-dark">
   <div class="ticker-dark">
     <span class="ticker-dark-item" data-fr="ROUTE <span>·</span>" data-en="ROAD <span>·</span>">ROUTE <span>·</span></span>
     <span class="ticker-dark-item">TRAIL <span>·</span></span>
-    <span class="ticker-dark-item">ENDURANCE <span>·</span></span>
     <span class="ticker-dark-item">ULTRA <span>·</span></span>
+    <span class="ticker-dark-item" data-fr="PISTE <span>·</span>" data-en="TRACK <span>·</span>">PISTE <span>·</span></span>
+    <span class="ticker-dark-item">ENDURANCE <span>·</span></span>
     <span class="ticker-dark-item" data-fr="COMMUNAUTÉ <span>·</span>" data-en="COMMUNITY <span>·</span>">COMMUNAUTÉ <span>·</span></span>
     <span class="ticker-dark-item">MONTRÉAL <span>·</span></span>
-    <span class="ticker-dark-item" data-fr="COURSE À PIED <span>·</span>" data-en="RUNNING <span>·</span>">COURSE À PIED <span>·</span></span>
     <span class="ticker-dark-item" data-fr="ROUTE <span>·</span>" data-en="ROAD <span>·</span>">ROUTE <span>·</span></span>
     <span class="ticker-dark-item">TRAIL <span>·</span></span>
-    <span class="ticker-dark-item">ENDURANCE <span>·</span></span>
     <span class="ticker-dark-item">ULTRA <span>·</span></span>
+    <span class="ticker-dark-item" data-fr="PISTE <span>·</span>" data-en="TRACK <span>·</span>">PISTE <span>·</span></span>
+    <span class="ticker-dark-item">ENDURANCE <span>·</span></span>
     <span class="ticker-dark-item" data-fr="COMMUNAUTÉ <span>·</span>" data-en="COMMUNITY <span>·</span>">COMMUNAUTÉ <span>·</span></span>
     <span class="ticker-dark-item">MONTRÉAL <span>·</span></span>
-    <span class="ticker-dark-item" data-fr="COURSE À PIED <span>·</span>" data-en="RUNNING <span>·</span>">COURSE À PIED <span>·</span></span>
   </div>
 </div>
 
-<!-- PROGRAMME -->
-<section class="agenda" id="programme">
-  <div class="agenda-header">
-    <div class="section-tag fi" data-fr="HORAIRE DE L'ÉVÉNEMENT" data-en="EVENT SCHEDULE">HORAIRE DE L'ÉVÉNEMENT</div>
-    <div class="section-title fi" data-fr="Programme." data-en="Schedule.">Programme.</div>
-    <span class="agenda-handwrite fi" data-fr="deux jours pour tout explorer!" data-en="Two days to explore everything!">deux jours pour tout explorer!</span>
-  </div>
-  <div class="day fi">
-    <div class="day-time" data-fr="JOUR 01<br>09h–18h" data-en="DAY 01<br>09AM–6PM">JOUR 01<br>09h–18h</div>
-    <div><div class="day-badge" data-fr="EXPO" data-en="EXPO">EXPO</div><div class="day-title" data-fr="Ouverture de l'expo + Démonstrations" data-en="Expo Opens + Brand Demos">Ouverture de l'expo + Démonstrations</div><div class="day-sub" data-fr="Parcourez 50+ exposants, testez des équipements sur la piste, assistez à des lancements de produits en direct." data-en="Browse 50+ exhibitors, test gear on the track, attend live product launches.">Parcourez 50+ exposants, testez des équipements sur la piste, assistez à des lancements de produits en direct.</div></div>
-  </div>
-  <div class="day fi">
-    <div class="day-time" data-fr="JOUR 01<br>14h–15h30" data-en="DAY 01<br>2PM–3:30PM">JOUR 01<br>14h–15h30</div>
-    <div><div class="day-badge" data-fr="CONFÉRENCE" data-en="KEYNOTE">CONFÉRENCE</div><div class="day-title" data-fr="L'avenir de la course urbaine" data-en="The Future of Urban Running">L'avenir de la course urbaine</div><div class="day-sub" data-fr="Table ronde sur la façon dont les villes transforment notre façon de courir." data-en="Panel on how cities are transforming the way we run.">Table ronde sur la façon dont les villes transforment notre façon de courir.</div></div>
-  </div>
-  <div class="day fi">
-    <div class="day-time" data-fr="JOUR 02<br>09h–18h" data-en="DAY 02<br>09AM–6PM">JOUR 02<br>09h–18h</div>
-    <div><div class="day-badge" data-fr="SENTIER & ENDURANCE" data-en="TRAIL & ENDURANCE">SENTIER & ENDURANCE</div><div class="day-title" data-fr="Journée Sentier & Endurance" data-en="Trail & Endurance Day">Journée Sentier & Endurance</div><div class="day-sub" data-fr="Accent sur le sentier, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées." data-en="Focus on trail, ultramarathon and outdoors. Technical workshops, demos and guided runs.">Accent sur le sentier, l'ultramarathon et le plein air. Ateliers techniques, démonstrations et sorties guidées.</div></div>
-  </div>
-  <div class="day fi">
-    <div class="day-time" data-fr="JOUR 02<br>16h–18h" data-en="DAY 02<br>4PM–6PM">JOUR 02<br>16h–18h</div>
-    <div><div class="day-badge" data-fr="COMMUNAUTÉ" data-en="COMMUNITY">COMMUNAUTÉ</div><div class="day-title" data-fr="Course communautaire + Rassemblement" data-en="Community Run + Social">Course communautaire + Rassemblement</div><div class="day-sub" data-fr="Course en groupe dans Montréal suivie d'un rassemblement pour clôturer le week-end." data-en="Group run through Montreal followed by a social to close out the weekend.">Course en groupe dans Montréal suivie d'un rassemblement pour clôturer le week-end.</div></div>
-  </div>
-</section>
-
-<!-- WHO WE ARE -->
-<section class="who" id="equipe">
-  <div class="who-inner">
-    <div class="who-left">
-      <div class="section-tag-light fi" data-fr="L'ÉQUIPE DERRIÈRE L'EXPO" data-en="THE TEAM BEHIND THE EXPO">L'ÉQUIPE DERRIÈRE L'EXPO</div>
-      <div class="who-title fi" data-fr="Qui sommes-nous ?" data-en="Who We Are">Qui sommes-nous ?</div>
-      <div class="who-body fi" data-fr="Expo Courir MTL est porté par trois passionnés unis par le sport, la communauté et la gestion d'événements. Notre ambition : créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied." data-en="MTL Run Expo is led by three passionate individuals united by sport, community, and event management. Our ambition: to create Montreal's first major gathering entirely dedicated to running.">Expo Courir MTL est porté par trois passionnés unis par le sport, la communauté et la gestion d'événements. Notre ambition : créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied.</div>
-      <div class="team fi">
-        <div class="team-member"><div class="team-name">Camille</div><div class="team-role" data-fr="Vision de l'événement + Communauté + Image de marque" data-en="Event Vision + Community + Branding">Vision de l'événement + Communauté + Image de marque</div></div>
-        <div class="team-member"><div class="team-name">Geoffroy</div><div class="team-role" data-fr="Partenariats + Culture de la course + Finances" data-en="Partnerships + Running Culture + Finance">Partenariats + Culture de la course + Finances</div></div>
-        <div class="team-member"><div class="team-name">Vincent</div><div class="team-role" data-fr="Marketing + Développement de projet" data-en="Marketing + Project Development">Marketing + Développement de projet</div></div>
-      </div>
+<!-- TEAM PREVIEW -->
+<section class="section section-dark">
+  <div class="section-tag-light fi" data-fr="L'ÉQUIPE" data-en="THE TEAM">L'ÉQUIPE</div>
+  <div class="section-title-light fi" data-fr="Qui sommes-nous ?" data-en="Who We Are">Qui sommes-nous ?</div>
+  <div class="who-grid">
+    <div class="who-card fi">
+      <div class="who-bar"></div>
+      <div class="who-name">Camille</div>
+      <div class="who-role" data-fr="Vision de l'événement + Communauté + Image de marque" data-en="Event Vision + Community + Branding">Vision de l'événement + Communauté + Image de marque</div>
     </div>
-    <div class="who-right">
-      <div class="who-logo-bg">ECM</div>
-      <div class="who-quote">
-        <div class="who-quote-text" data-fr='"On court ensemble.<br>On grandit ensemble."' data-en='"We run together.<br>We grow together."'>"On court ensemble.<br>On grandit ensemble."</div>
-        <div class="who-quote-sub" data-fr="— L'ÉQUIPE EXPO COURIR MTL" data-en="— THE MTL RUN EXPO TEAM">— L'ÉQUIPE EXPO COURIR MTL</div>
-      </div>
+    <div class="who-card fi2">
+      <div class="who-bar"></div>
+      <div class="who-name">Geoffroy</div>
+      <div class="who-role" data-fr="Partenariats + Culture de la course + Finances" data-en="Partnerships + Running Culture + Finance">Partenariats + Culture de la course + Finances</div>
     </div>
+    <div class="who-card fi3">
+      <div class="who-bar"></div>
+      <div class="who-name">Vincent</div>
+      <div class="who-role" data-fr="Marketing + Développement de projet" data-en="Marketing + Project Development">Marketing + Développement de projet</div>
+    </div>
+  </div>
+  <div style="margin-top:32px;">
+    <a href="about.html" class="btn-primary" data-fr="EN SAVOIR PLUS ↗" data-en="LEARN MORE ↗">EN SAVOIR PLUS ↗</a>
   </div>
 </section>
 
 <!-- SPONSORS -->
-<section class="sponsors" id="sponsors">
+<section class="section section-beige">
   <div class="section-tag fi" data-fr="PARTENAIRES & EXPOSANTS" data-en="PARTNERS & EXHIBITORS">PARTENAIRES & EXPOSANTS</div>
   <div class="section-title fi" data-fr="Ils courent avec nous." data-en="They run with us.">Ils courent avec nous.</div>
   <div class="sponsors-grid fi">
     <div class="sponsor-box"><div class="sponsor-name">HOKA</div><div class="sponsor-cat" data-fr="CHAUSSURES" data-en="FOOTWEAR">CHAUSSURES</div></div>
     <div class="sponsor-box"><div class="sponsor-name">SALOMON</div><div class="sponsor-cat">TRAIL</div></div>
-    <div class="sponsor-box"><div class="sponsor-name">ON RUNNING</div><div class="sponsor-cat" data-fr="PERFORMANCE" data-en="PERFORMANCE">PERFORMANCE</div></div>
+    <div class="sponsor-box"><div class="sponsor-name">ON RUNNING</div><div class="sponsor-cat">PERFORMANCE</div></div>
     <div class="sponsor-box"><div class="sponsor-name">BROOKS</div><div class="sponsor-cat" data-fr="ROUTE" data-en="ROAD">ROUTE</div></div>
     <div class="sponsor-box"><div class="sponsor-name">GARMIN</div><div class="sponsor-cat" data-fr="TECHNOLOGIE" data-en="TECHNOLOGY">TECHNOLOGIE</div></div>
     <div class="sponsor-box"><div class="sponsor-name">TRACKSMITH</div><div class="sponsor-cat" data-fr="VÊTEMENTS" data-en="APPAREL">VÊTEMENTS</div></div>
-    <div class="sponsor-box" style="border: 1.5px dashed #bbb; background: transparent;"><div class="sponsor-name" style="color:#bbb;" data-fr="VOTRE MARQUE" data-en="YOUR BRAND">VOTRE MARQUE</div><div class="sponsor-cat" data-fr="DEVENEZ PARTENAIRE" data-en="BECOME A PARTNER">DEVENEZ PARTENAIRE</div></div>
-    <div class="sponsor-box" style="border: 1.5px dashed #bbb; background: transparent;"><div class="sponsor-name" style="color:#bbb;" data-fr="VOTRE MARQUE" data-en="YOUR BRAND">VOTRE MARQUE</div><div class="sponsor-cat" data-fr="DEVENEZ PARTENAIRE" data-en="BECOME A PARTNER">DEVENEZ PARTENAIRE</div></div>
+    <div class="sponsor-box" style="border:1.5px dashed #bbb;background:transparent;"><div class="sponsor-name" style="color:#bbb;" data-fr="VOTRE MARQUE" data-en="YOUR BRAND">VOTRE MARQUE</div><div class="sponsor-cat" data-fr="DEVENEZ PARTENAIRE" data-en="BECOME A PARTNER">DEVENEZ PARTENAIRE</div></div>
+    <div class="sponsor-box" style="border:1.5px dashed #bbb;background:transparent;"><div class="sponsor-name" style="color:#bbb;" data-fr="VOTRE MARQUE" data-en="YOUR BRAND">VOTRE MARQUE</div><div class="sponsor-cat" data-fr="DEVENEZ PARTENAIRE" data-en="BECOME A PARTNER">DEVENEZ PARTENAIRE</div></div>
   </div>
-</section>
-
-<!-- CTA -->
-<section class="cta" id="inscription">
-  <div class="cta-handwrite" data-fr="on a hâte de vous voir!" data-en="can't wait to see you there!">on a hâte de vous voir!</div>
-  <div class="cta-left">
-    <div class="cta-tag fi" data-fr="NE MANQUEZ PAS UN PAS" data-en="DON'T MISS A STEP">NE MANQUEZ PAS UN PAS</div>
-    <div class="cta-title fi" data-fr="Réservez votre place." data-en="Secure your spot.">Réservez votre place.</div>
-    <div class="cta-sub fi" data-fr="15$ pour deux jours complets — accès expo, conférences, ateliers, piste de course et course communautaire." data-en="$15 for two full days — expo access, talks, workshops, running track and community run.">15$ pour deux jours complets — accès expo, conférences, ateliers, piste de course et course communautaire.</div>
+  <div style="margin-top:32px;">
+    <a href="contact.html#partenaires" class="btn-primary" data-fr="DEVENEZ PARTENAIRE ↗" data-en="BECOME A PARTNER ↗">DEVENEZ PARTENAIRE ↗</a>
   </div>
-  <form class="form-box fi" action="https://formspree.io/f/mykrnkog" method="POST">
-    <div class="form-title" data-fr="NOUS CONTACTER" data-en="GET IN TOUCH">NOUS CONTACTER</div>
-    <input class="input" type="text" name="nom" data-placeholder-fr="Nom" data-placeholder-en="Name" placeholder="Nom" required />
-    <input class="input" type="email" name="courriel" data-placeholder-fr="Courriel" data-placeholder-en="Email" placeholder="Courriel" required />
-    <input class="input" type="text" name="club" data-placeholder-fr="Club de course (facultatif)" data-placeholder-en="Run club (optional)" placeholder="Club de course (facultatif)" />
-    <button type="submit" class="form-btn" data-fr="ENVOYER ↗" data-en="SEND ↗">ENVOYER ↗</button>
-  </form>
 </section>
 
 <!-- FOOTER -->
@@ -534,11 +461,11 @@
     <div>
       <div class="footer-col-title" data-fr="NAVIGATION" data-en="NAVIGATION">NAVIGATION</div>
       <div class="footer-links">
-        <a href="#zones" data-fr="Zones de l'expo" data-en="Expo Zones">Zones de l'expo</a>
-        <a href="#programme" data-fr="Programme" data-en="Schedule">Programme</a>
-        <a href="#equipe" data-fr="L'équipe" data-en="The Team">L'équipe</a>
-        <a href="#sponsors" data-fr="Partenaires" data-en="Partners">Partenaires</a>
-        <a href="#inscription" data-fr="Billets & Contact" data-en="Tickets & Contact">Billets & Contact</a>
+        <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+        <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+        <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
     <div>
@@ -556,42 +483,14 @@
   </div>
 </footer>
 
+<script src="nav.js"></script>
 <script>
-  // LANG
-  let currentLang = 'fr';
-  function setLang(lang) {
-    currentLang = lang;
-    document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.querySelectorAll('[data-fr]').forEach(el => {
-      if (el.tagName === 'INPUT') return;
-      const val = el.getAttribute('data-' + lang);
-      if (val) el.innerHTML = val;
-    });
-    document.querySelectorAll('[data-placeholder-fr]').forEach(el => {
-      el.placeholder = el.getAttribute('data-placeholder-' + lang);
-    });
-    document.getElementById('html-root').lang = lang;
-  }
-
-  // MOBILE MENU
-  function toggleMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  }
-
-  // HERO ANIM
   setTimeout(() => {
     document.getElementById('eyebrow').classList.add('vis');
     document.getElementById('heroTitle').classList.add('vis');
-    document.getElementById('heroMeta').classList.add('vis');
-    document.getElementById('heroBtns').classList.add('vis');
+    document.getElementById('heroSub').classList.add('vis');
+    document.getElementById('heroSignup').classList.add('vis');
   }, 100);
-
-  // SCROLL OBSERVER
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fi, .fi2, .fi3').forEach(el => obs.observe(el));
 
   // STATS COUNTER
   const statObs = new IntersectionObserver((entries) => {
@@ -600,13 +499,8 @@
         entry.target.querySelectorAll('[data-target]').forEach(el => {
           const target = parseInt(el.dataset.target);
           const suffix = target >= 50 ? '+' : '';
-          let cur = 0;
-          const step = Math.max(target / 60, 1);
-          const t = setInterval(() => {
-            cur = Math.min(cur + step, target);
-            el.textContent = Math.floor(cur) + suffix;
-            if (cur >= target) clearInterval(t);
-          }, 16);
+          let cur = 0; const step = Math.max(target / 60, 1);
+          const t = setInterval(() => { cur = Math.min(cur + step, target); el.textContent = Math.floor(cur) + suffix; if (cur >= target) clearInterval(t); }, 16);
         });
         statObs.unobserve(entry.target);
       }
@@ -616,20 +510,14 @@
 
   // COUNTDOWN
   function updateCountdown() {
-    const event = new Date('2027-04-17T09:00:00');
-    const now = new Date();
-    const diff = event - now;
-    if (diff <= 0) {
-      ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '00');
-      return;
-    }
-    document.getElementById('days').textContent = String(Math.floor(diff / 86400000)).padStart(2, '0');
-    document.getElementById('hours').textContent = String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0');
-    document.getElementById('minutes').textContent = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
-    document.getElementById('seconds').textContent = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+    const diff = new Date('2027-04-17T09:00:00') - new Date();
+    if (diff <= 0) { ['days','hours','minutes','seconds'].forEach(id => document.getElementById(id).textContent = '00'); return; }
+    document.getElementById('days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
+    document.getElementById('hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
   }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  updateCountdown(); setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>

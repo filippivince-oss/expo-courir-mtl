@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À Propos / About — Expo Courir MTL</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; min-height: 400px; }
+  .mission-text { padding: 56px 48px; display: flex; flex-direction: column; justify-content: center; }
+  .mission-visual { background: var(--indigo); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .mission-big { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 120px; line-height: 0.85; color: transparent; -webkit-text-stroke: 1px rgba(184,224,74,0.15); text-transform: uppercase; text-align: center; padding: 40px; }
+  .mission-body { font-size: 15px; color: var(--muted); line-height: 1.9; margin-bottom: 24px; }
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .team-card { background: var(--navy); padding: 48px 36px; border-left: 3px solid transparent; transition: border-color 0.2s; }
+  .team-card:hover { border-left-color: var(--green); }
+  .team-card-name { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 48px; color: var(--beige); text-transform: uppercase; line-height: 0.9; margin-bottom: 8px; }
+  .team-card-role { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; color: var(--green); margin-bottom: 20px; }
+  .team-card-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .values-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .value-card { background: #ccc9bc; padding: 36px 28px; }
+  .value-num { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 52px; font-weight: 900; color: var(--indigo); line-height: 1; margin-bottom: 12px; }
+  .value-title { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--navy); margin-bottom: 8px; }
+  .value-text { font-size: 12px; color: #666; line-height: 1.6; }
+  @media (max-width: 900px) { .mission-grid { grid-template-columns: 1fr; } .team-grid { grid-template-columns: 1fr; } .values-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .values-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <span class="lang-label">LANGUE / LANGUAGE:</span>
+  <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
+    <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
+    <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
+    <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
+    <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
+    <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" onclick="toggleMenu()">✕</span>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+  <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+  <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</a>
+    <div class="nav-links">
+
+      <!-- HOME -->
+      <div class="nav-item">
+        <a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
+      </div>
+
+      <!-- PROGRAMME MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="programme.html" data-fr="PROGRAMME ▾" data-en="SCHEDULE ▾">PROGRAMME ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="HORAIRE" data-en="SCHEDULE">HORAIRE</div>
+            <a href="programme.html#jour1" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 1 — EXPO" data-en="DAY 1 — EXPO">JOUR 1 — EXPO</div>
+              <div class="mega-link-desc" data-fr="Ouverture, marques, démonstrations" data-en="Opening, brands, demos">Ouverture, marques, démonstrations</div>
+            </a>
+            <a href="programme.html#jour2" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 2 — SENTIER & ENDURANCE" data-en="DAY 2 — TRAIL & ENDURANCE">JOUR 2 — SENTIER & ENDURANCE</div>
+              <div class="mega-link-desc" data-fr="Ateliers, conférences, course communautaire" data-en="Workshops, talks, community run">Ateliers, conférences, course communautaire</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="ZONES" data-en="ZONES">ZONES</div>
+            <a href="programme.html#zones" class="mega-link">
+              <div class="mega-link-title" data-fr="8 ZONES THÉMATIQUES" data-en="8 THEMED ZONES">8 ZONES THÉMATIQUES</div>
+              <div class="mega-link-desc" data-fr="Vêtements, tech, nutrition, récupération..." data-en="Apparel, tech, nutrition, recovery...">Vêtements, tech, nutrition, récupération...</div>
+            </a>
+            <a href="programme.html#conferences" class="mega-link">
+              <div class="mega-link-title" data-fr="CONFÉRENCES" data-en="SPEAKER STAGE">CONFÉRENCES</div>
+              <div class="mega-link-desc" data-fr="Experts, entraîneurs, athlètes d'élite" data-en="Experts, coaches, elite athletes">Experts, entraîneurs, athlètes d'élite</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="about.html" data-fr="À PROPOS ▾" data-en="ABOUT ▾">À PROPOS ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="L'ÉVÉNEMENT" data-en="THE EVENT">L'ÉVÉNEMENT</div>
+            <a href="about.html#mission" class="mega-link">
+              <div class="mega-link-title" data-fr="NOTRE MISSION" data-en="OUR MISSION">NOTRE MISSION</div>
+              <div class="mega-link-desc" data-fr="Pourquoi on a créé cet expo" data-en="Why we created this expo">Pourquoi on a créé cet expo</div>
+            </a>
+            <a href="about.html#equipe" class="mega-link">
+              <div class="mega-link-title" data-fr="L'ÉQUIPE" data-en="THE TEAM">L'ÉQUIPE</div>
+              <div class="mega-link-desc" data-fr="Camille, Geoffroy, Vincent" data-en="Camille, Geoffroy, Vincent">Camille, Geoffroy, Vincent</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="PARTICIPER" data-en="GET INVOLVED">PARTICIPER</div>
+            <a href="volunteer.html" class="mega-link">
+              <div class="mega-link-title" data-fr="BÉNÉVOLAT" data-en="VOLUNTEER">BÉNÉVOLAT</div>
+              <div class="mega-link-desc" data-fr="Rejoignez notre équipe de bénévoles" data-en="Join our volunteer team">Rejoignez notre équipe de bénévoles</div>
+            </a>
+            <a href="contact.html#partenaires" class="mega-link">
+              <div class="mega-link-title" data-fr="PARTENAIRES" data-en="PARTNERS">PARTENAIRES</div>
+              <div class="mega-link-desc" data-fr="Devenez exposant ou commanditaire" data-en="Become an exhibitor or sponsor">Devenez exposant ou commanditaire</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item"><a href="volunteer.html" data-fr="BÉNÉVOLES" data-en="VOLUNTEER">BÉNÉVOLES</a></div>
+      <div class="nav-item"><a href="faq.html">FAQ</a></div>
+      <div class="nav-item"><a href="contact.html" data-fr="CONTACT" data-en="CONTACT">CONTACT</a></div>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#signup" class="nav-cta" data-fr="MISES À JOUR ↗" data-en="UPDATES ↗">MISES À JOUR ↗</a>
+      <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-tag" data-fr="L'HISTOIRE DERRIÈRE L'EXPO" data-en="THE STORY BEHIND THE EXPO">L'HISTOIRE DERRIÈRE L'EXPO</div>
+    <div class="page-hero-title" data-fr="À <span class='accent'>Propos</span>" data-en="<span class='accent'>About</span> Us">À <span class="accent">Propos</span></div>
+    <div class="page-hero-sub" data-fr="Trois coureurs. Une vision. Le premier grand expo de course à pied de Montréal." data-en="Three runners. One vision. Montreal's first major running expo.">Trois coureurs. Une vision. Le premier grand expo de course à pied de Montréal.</div>
+  </div>
+</div>
+
+<!-- MISSION -->
+<div class="mission-grid" id="mission">
+  <div class="mission-text section-beige">
+    <div class="section-tag fi" data-fr="NOTRE MISSION" data-en="OUR MISSION">NOTRE MISSION</div>
+    <div class="section-title fi" data-fr="Bâtir la communauté de course de Montréal." data-en="Building Montreal's running community.">Bâtir la communauté de course de Montréal.</div>
+    <div class="mission-body fi" data-fr="Montréal est une ville de coureurs. Des rues du Plateau aux sentiers du Mont-Royal, des pistes du Stade Olympique aux berges du fleuve — notre ville court. Pourtant, il n'existait pas d'espace unique pour rassembler toute cette communauté. Expo Courir MTL change ça." data-en="Montreal is a city of runners. From the streets of the Plateau to the trails of Mont-Royal, from the tracks of the Olympic Stadium to the riverbanks — our city runs. Yet there was no single space to bring this entire community together. MTL Run Expo changes that.">Montréal est une ville de coureurs. Des rues du Plateau aux sentiers du Mont-Royal — notre ville court. Pourtant, il n'existait pas d'espace unique pour rassembler toute cette communauté. Expo Courir MTL change ça.</div>
+    <div class="mission-body fi" data-fr="Notre mission : créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied. Un événement bilingue, inclusif et accessible qui célèbre tous les types de coureurs, des débutants aux élites." data-en="Our mission: create Montreal's first major gathering entirely dedicated to running. A bilingual, inclusive and accessible event that celebrates all types of runners, from beginners to elites.">Notre mission : créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied.</div>
+  </div>
+  <div class="mission-visual">
+    <div class="mission-big" data-fr="RUN<br>MTL<br>2027" data-en="RUN<br>MTL<br>2027">RUN<br>MTL<br>2027</div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section class="section section-beige" id="equipe">
+  <div class="section-tag fi" data-fr="L'ÉQUIPE FONDATRICE" data-en="THE FOUNDING TEAM">L'ÉQUIPE FONDATRICE</div>
+  <div class="section-title fi" data-fr="Qui sommes-nous ?" data-en="Who We Are">Qui sommes-nous ?</div>
+  <div style="font-size:15px;color:#555;line-height:1.8;max-width:600px;margin-bottom:48px;" class="fi" data-fr="Expo Courir MTL est porté par trois passionnés unis par le sport, la communauté et la gestion d'événements, avec l'ambition de créer le premier grand rassemblement de Montréal entièrement dédié à la course à pied." data-en="MTL Run Expo is led by three passionate individuals united by sport, community, and event management, with the ambition of creating Montreal's first major gathering entirely dedicated to running.">Expo Courir MTL est porté par trois passionnés unis par le sport, la communauté et la gestion d'événements.</div>
+  <div class="team-grid">
+    <div class="team-card fi">
+      <div class="team-card-name">Camille</div>
+      <div class="team-card-role" data-fr="VISION & COMMUNAUTÉ & IMAGE DE MARQUE" data-en="VISION & COMMUNITY & BRANDING">VISION & COMMUNAUTÉ & IMAGE DE MARQUE</div>
+      <div class="team-card-desc" data-fr="Camille est la force créative derrière Expo Courir MTL. Avec une passion profonde pour la communauté de course et une expertise en gestion d'événements, elle orchestre la vision globale de l'expo et veille à ce que chaque détail reflète l'âme de la course à pied montréalaise." data-en="Camille is the creative force behind MTL Run Expo. With a deep passion for the running community and expertise in event management, she orchestrates the overall vision of the expo and ensures every detail reflects the soul of Montreal's running scene.">Camille est la force créative derrière Expo Courir MTL. Avec une passion profonde pour la communauté de course, elle orchestre la vision globale de l'expo.</div>
+    </div>
+    <div class="team-card fi2">
+      <div class="team-card-name">Geoffroy</div>
+      <div class="team-card-role" data-fr="PARTENARIATS & CULTURE & FINANCES" data-en="PARTNERSHIPS & CULTURE & FINANCE">PARTENARIATS & CULTURE & FINANCES</div>
+      <div class="team-card-desc" data-fr="Geoffroy est le connecteur de l'équipe. Profondément ancré dans la culture de la course à pied montréalaise, il bâtit les ponts entre l'expo et les marques, clubs et organisations qui font vivre notre communauté. Il assure également la santé financière du projet." data-en="Geoffroy is the team's connector. Deeply rooted in Montreal's running culture, he builds bridges between the expo and the brands, clubs and organizations that make our community thrive. He also ensures the financial health of the project.">Geoffroy est le connecteur de l'équipe. Profondément ancré dans la culture de la course à pied montréalaise, il bâtit les ponts avec les marques et clubs.</div>
+    </div>
+    <div class="team-card fi3">
+      <div class="team-card-name">Vincent</div>
+      <div class="team-card-role" data-fr="MARKETING & DÉVELOPPEMENT DE PROJET" data-en="MARKETING & PROJECT DEVELOPMENT">MARKETING & DÉVELOPPEMENT DE PROJET</div>
+      <div class="team-card-desc" data-fr="Vincent est le stratège de l'équipe. Avec une expertise en marketing et en développement de projet, il s'assure que le message d'Expo Courir MTL atteint chaque coureur de Montréal et au-delà. Il coordonne également le développement global du projet." data-en="Vincent is the team's strategist. With expertise in marketing and project development, he ensures the MTL Run Expo message reaches every runner in Montreal and beyond. He also coordinates the overall project development.">Vincent est le stratège de l'équipe. Il s'assure que le message d'Expo Courir MTL atteint chaque coureur de Montréal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section section-dark">
+  <div class="section-tag-light fi" data-fr="NOS VALEURS" data-en="OUR VALUES">NOS VALEURS</div>
+  <div class="section-title-light fi" data-fr="Ce en quoi on croit." data-en="What we believe in.">Ce en quoi on croit.</div>
+  <div class="values-grid">
+    <div class="value-card fi">
+      <div class="value-num">01</div>
+      <div class="value-title" data-fr="COMMUNAUTÉ AVANT TOUT" data-en="COMMUNITY FIRST">COMMUNAUTÉ AVANT TOUT</div>
+      <div class="value-text" data-fr="L'expo existe pour rassembler les coureurs de Montréal, pas seulement pour vendre des produits." data-en="The expo exists to bring Montreal's runners together, not just to sell products.">L'expo existe pour rassembler les coureurs de Montréal, pas seulement pour vendre des produits.</div>
+    </div>
+    <div class="value-card fi2">
+      <div class="value-num">02</div>
+      <div class="value-title" data-fr="INCLUSIVITÉ" data-en="INCLUSIVITY">INCLUSIVITÉ</div>
+      <div class="value-text" data-fr="Tous les types de coureurs sont les bienvenus — débutants, élites, route, sentier, piste." data-en="All types of runners are welcome — beginners, elites, road, trail, track.">Tous les types de coureurs sont les bienvenus — débutants, élites, route, sentier, piste.</div>
+    </div>
+    <div class="value-card fi3">
+      <div class="value-num">03</div>
+      <div class="value-title" data-fr="BILINGUISME" data-en="BILINGUALISM">BILINGUISME</div>
+      <div class="value-text" data-fr="Montréal est bilingue. Notre expo l'est aussi — entièrement, sans compromis." data-en="Montreal is bilingual. So is our expo — completely, without compromise.">Montréal est bilingue. Notre expo l'est aussi — entièrement, sans compromis.</div>
+    </div>
+    <div class="value-card fi">
+      <div class="value-num">04</div>
+      <div class="value-title" data-fr="ACCESSIBILITÉ" data-en="ACCESSIBILITY">ACCESSIBILITÉ</div>
+      <div class="value-text" data-fr="À 15$, nous voulons que l'expo soit accessible au plus grand nombre de coureurs possible." data-en="At 5, we want the expo to be accessible to as many runners as possible.">À 15$, nous voulons que l'expo soit accessible au plus grand nombre de coureurs possible.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo" data-fr="Expo Courir MTL" data-en="MTL Run Expo">Expo Courir MTL</div>
+      <div class="footer-tagline" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="NAVIGATION" data-en="NAVIGATION">NAVIGATION</div>
+      <div class="footer-links">
+        <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+        <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+        <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="SUIVEZ-NOUS" data-en="FOLLOW US">SUIVEZ-NOUS</div>
+      <div class="footer-social">
+        <a href="#" class="social-btn">IG</a>
+        <a href="#" class="social-btn">FB</a>
+        <a href="#" class="social-btn">STR</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" data-fr="© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS." data-en="© 2027 MTL RUN EXPO. ALL RIGHTS RESERVED.">© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS.</div>
+    <div class="footer-copy">MONTRÉAL, QUÉBEC, CANADA</div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Expo Courir MTL</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 48px; }
+  .faq-cat { background: var(--navy); padding: 40px 36px; }
+  .faq-cat-title { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 28px; color: var(--green); text-transform: uppercase; margin-bottom: 28px; padding-bottom: 12px; border-bottom: 1px solid rgba(61,58,140,0.3); }
+  .faq-item { border-bottom: 1px solid rgba(61,58,140,0.2); }
+  .faq-q { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; color: var(--beige); padding: 16px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; letter-spacing: 0.5px; line-height: 1.5; }
+  .faq-q:hover { color: var(--green); }
+  .faq-arrow { font-size: 14px; color: var(--green); flex-shrink: 0; transition: transform 0.3s; }
+  .faq-a { font-size: 13px; color: var(--muted); line-height: 1.8; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+  .faq-item.open .faq-a { max-height: 300px; padding-bottom: 16px; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-cta { background: var(--indigo); padding: 56px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 2px; }
+  .faq-cta-text { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 40px; color: var(--beige); text-transform: uppercase; line-height: 1; }
+  .faq-cta-sub { font-size: 13px; color: var(--light-indigo); margin-top: 8px; }
+  @media (max-width: 768px) { .faq-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <span class="lang-label">LANGUE / LANGUAGE:</span>
+  <button class="lang-btn active" id="btn-fr" onclick="setLang('fr')">FR</button>
+  <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
+    <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
+    <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
+    <span class="ticker-item" data-fr="MONTRÉAL · AVRIL 2027" data-en="MONTREAL · APRIL 2027">MONTRÉAL · AVRIL 2027</span>
+    <span class="ticker-item" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</span>
+    <span class="ticker-item" data-fr="ROUTE · SENTIER · ULTRA · PISTE" data-en="ROAD · TRAIL · ULTRA · TRACK">ROUTE · SENTIER · ULTRA · PISTE</span>
+    <span class="ticker-item" data-fr="BILLETS · 15$" data-en="TICKETS · $15">BILLETS · 15$</span>
+    <span class="ticker-item" data-fr="2 JOURS · ACCÈS COMPLET" data-en="2 DAYS · FULL ACCESS">2 JOURS · ACCÈS COMPLET</span>
+  </div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" onclick="toggleMenu()">✕</span>
+  <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+  <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+  <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+  <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+  <a href="faq.html">FAQ</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" data-fr="EXPO COURIR MTL" data-en="MTL RUN EXPO">EXPO COURIR MTL</a>
+    <div class="nav-links">
+
+      <!-- HOME -->
+      <div class="nav-item">
+        <a href="index.html" data-fr="ACCUEIL" data-en="HOME">ACCUEIL</a>
+      </div>
+
+      <!-- PROGRAMME MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="programme.html" data-fr="PROGRAMME ▾" data-en="SCHEDULE ▾">PROGRAMME ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="HORAIRE" data-en="SCHEDULE">HORAIRE</div>
+            <a href="programme.html#jour1" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 1 — EXPO" data-en="DAY 1 — EXPO">JOUR 1 — EXPO</div>
+              <div class="mega-link-desc" data-fr="Ouverture, marques, démonstrations" data-en="Opening, brands, demos">Ouverture, marques, démonstrations</div>
+            </a>
+            <a href="programme.html#jour2" class="mega-link">
+              <div class="mega-link-title" data-fr="JOUR 2 — SENTIER & ENDURANCE" data-en="DAY 2 — TRAIL & ENDURANCE">JOUR 2 — SENTIER & ENDURANCE</div>
+              <div class="mega-link-desc" data-fr="Ateliers, conférences, course communautaire" data-en="Workshops, talks, community run">Ateliers, conférences, course communautaire</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="ZONES" data-en="ZONES">ZONES</div>
+            <a href="programme.html#zones" class="mega-link">
+              <div class="mega-link-title" data-fr="8 ZONES THÉMATIQUES" data-en="8 THEMED ZONES">8 ZONES THÉMATIQUES</div>
+              <div class="mega-link-desc" data-fr="Vêtements, tech, nutrition, récupération..." data-en="Apparel, tech, nutrition, recovery...">Vêtements, tech, nutrition, récupération...</div>
+            </a>
+            <a href="programme.html#conferences" class="mega-link">
+              <div class="mega-link-title" data-fr="CONFÉRENCES" data-en="SPEAKER STAGE">CONFÉRENCES</div>
+              <div class="mega-link-desc" data-fr="Experts, entraîneurs, athlètes d'élite" data-en="Experts, coaches, elite athletes">Experts, entraîneurs, athlètes d'élite</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT MEGA -->
+      <div class="nav-item has-dropdown">
+        <a href="about.html" data-fr="À PROPOS ▾" data-en="ABOUT ▾">À PROPOS ▾</a>
+        <div class="mega-menu cols-2">
+          <div>
+            <div class="mega-col-title" data-fr="L'ÉVÉNEMENT" data-en="THE EVENT">L'ÉVÉNEMENT</div>
+            <a href="about.html#mission" class="mega-link">
+              <div class="mega-link-title" data-fr="NOTRE MISSION" data-en="OUR MISSION">NOTRE MISSION</div>
+              <div class="mega-link-desc" data-fr="Pourquoi on a créé cet expo" data-en="Why we created this expo">Pourquoi on a créé cet expo</div>
+            </a>
+            <a href="about.html#equipe" class="mega-link">
+              <div class="mega-link-title" data-fr="L'ÉQUIPE" data-en="THE TEAM">L'ÉQUIPE</div>
+              <div class="mega-link-desc" data-fr="Camille, Geoffroy, Vincent" data-en="Camille, Geoffroy, Vincent">Camille, Geoffroy, Vincent</div>
+            </a>
+          </div>
+          <div>
+            <div class="mega-col-title" data-fr="PARTICIPER" data-en="GET INVOLVED">PARTICIPER</div>
+            <a href="volunteer.html" class="mega-link">
+              <div class="mega-link-title" data-fr="BÉNÉVOLAT" data-en="VOLUNTEER">BÉNÉVOLAT</div>
+              <div class="mega-link-desc" data-fr="Rejoignez notre équipe de bénévoles" data-en="Join our volunteer team">Rejoignez notre équipe de bénévoles</div>
+            </a>
+            <a href="contact.html#partenaires" class="mega-link">
+              <div class="mega-link-title" data-fr="PARTENAIRES" data-en="PARTNERS">PARTENAIRES</div>
+              <div class="mega-link-desc" data-fr="Devenez exposant ou commanditaire" data-en="Become an exhibitor or sponsor">Devenez exposant ou commanditaire</div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-item"><a href="volunteer.html" data-fr="BÉNÉVOLES" data-en="VOLUNTEER">BÉNÉVOLES</a></div>
+      <div class="nav-item"><a href="faq.html">FAQ</a></div>
+      <div class="nav-item"><a href="contact.html" data-fr="CONTACT" data-en="CONTACT">CONTACT</a></div>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#signup" class="nav-cta" data-fr="MISES À JOUR ↗" data-en="UPDATES ↗">MISES À JOUR ↗</a>
+      <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-tag" data-fr="QUESTIONS FRÉQUENTES" data-en="FREQUENTLY ASKED QUESTIONS">QUESTIONS FRÉQUENTES</div>
+    <div class="page-hero-title" data-fr="FAQ" data-en="FAQ">FAQ</div>
+    <div class="page-hero-sub" data-fr="Tout ce que vous devez savoir — que vous soyez coureur, exposant ou commanditaire." data-en="Everything you need to know — whether you're a runner, exhibitor, or sponsor.">Tout ce que vous devez savoir — que vous soyez coureur, exposant ou commanditaire.</div>
+  </div>
+</div>
+
+<section class="section section-beige" style="padding-top:40px;padding-bottom:0;">
+  <div class="faq-grid">
+
+    <!-- RUNNERS / VISITEURS -->
+    <div class="faq-cat fi">
+      <div class="faq-cat-title" data-fr="COUREURS & VISITEURS" data-en="RUNNERS & VISITORS">COUREURS & VISITEURS</div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Est-ce que l'entrée est gratuite ? <span class='faq-arrow'>▾</span>" data-en="Is entry free? <span class='faq-arrow'>▾</span>">Est-ce que l'entrée est gratuite ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="L'accès général à l'expo est inclus dans le billet à 15$. Ce billet donne accès aux deux jours complets, à toutes les zones, aux conférences, aux ateliers et à la course communautaire." data-en="General expo access is included in the 5 ticket. This ticket gives you access to both full days, all zones, talks, workshops and the community run.">L'accès général à l'expo est inclus dans le billet à 15$. Ce billet donne accès aux deux jours complets, à toutes les zones, aux conférences, aux ateliers et à la course communautaire.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Où se déroule l'événement ? <span class='faq-arrow'>▾</span>" data-en="Where does the event take place? <span class='faq-arrow'>▾</span>">Où se déroule l'événement ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="L'événement se déroulera à Montréal en avril 2027. Le lieu exact sera annoncé prochainement. Inscrivez-vous à notre infolettre pour être les premiers informés." data-en="The event will take place in Montreal in April 2027. The exact venue will be announced soon. Sign up for our newsletter to be the first to know.">L'événement se déroulera à Montréal en avril 2027. Le lieu exact sera annoncé prochainement. Inscrivez-vous à notre infolettre pour être les premiers informés.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Quels types de coureurs sont les bienvenus ? <span class='faq-arrow'>▾</span>" data-en="What types of runners are welcome? <span class='faq-arrow'>▾</span>">Quels types de coureurs sont les bienvenus ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Tous les coureurs ! Route, sentier, ultra, piste, endurance, plein air — peu importe votre niveau ou votre discipline. L'expo est conçu pour accueillir des débutants comme des élites." data-en="All runners! Road, trail, ultra, track, endurance, outdoor — no matter your level or discipline. The expo is designed to welcome beginners and elites alike.">Tous les coureurs ! Route, sentier, ultra, piste, endurance, plein air — peu importe votre niveau ou votre discipline.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Est-ce que je dois m'inscrire à l'avance ? <span class='faq-arrow'>▾</span>" data-en="Do I need to register in advance? <span class='faq-arrow'>▾</span>">Est-ce que je dois m'inscrire à l'avance ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="La billetterie n'est pas encore ouverte. Inscrivez-vous à notre infolettre pour être avisé en priorité lors de l'ouverture des ventes et bénéficier des offres de lancement." data-en="Ticketing is not yet open. Sign up for our newsletter to be notified first when sales open and take advantage of launch offers.">La billetterie n'est pas encore ouverte. Inscrivez-vous à notre infolettre pour être avisé en priorité lors de l'ouverture des ventes.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Puis-je tester des chaussures sur place ? <span class='faq-arrow'>▾</span>" data-en="Can I try shoes on-site? <span class='faq-arrow'>▾</span>">Puis-je tester des chaussures sur place ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Oui ! La zone Piste de Course est spécialement conçue pour tester les chaussures et équipements en conditions réelles. Plusieurs marques offriront des essais encadrés par des experts." data-en="Yes! The Running Track zone is specially designed for testing shoes and gear in real conditions. Several brands will offer guided trials with experts.">Oui ! La zone Piste de Course est spécialement conçue pour tester les chaussures et équipements en conditions réelles.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Y a-t-il une limite d'âge ? <span class='faq-arrow'>▾</span>" data-en="Is there an age limit? <span class='faq-arrow'>▾</span>">Y a-t-il une limite d'âge ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="L'expo est ouvert à tous les âges. Les enfants de moins de 12 ans accompagnés d'un adulte entrent gratuitement. Les mineurs doivent être accompagnés d'un adulte pour les activités physiques." data-en="The expo is open to all ages. Children under 12 accompanied by an adult enter free. Minors must be accompanied by an adult for physical activities.">L'expo est ouvert à tous les âges. Les enfants de moins de 12 ans accompagnés d'un adulte entrent gratuitement.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="La course communautaire est-elle incluse dans le billet ? <span class='faq-arrow'>▾</span>" data-en="Is the community run included in the ticket? <span class='faq-arrow'>▾</span>">La course communautaire est-elle incluse dans le billet ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Oui, la course communautaire du Jour 2 est incluse dans le billet standard à 15$. Elle est ouverte à tous les niveaux et les distances seront adaptées pour être accessibles à tous." data-en="Yes, the Day 2 community run is included in the standard 5 ticket. It's open to all levels and distances will be adapted to be accessible to everyone.">Oui, la course communautaire du Jour 2 est incluse dans le billet standard à 15$.</div>
+      </div>
+    </div>
+
+    <!-- EXPOSANTS / SPONSORS -->
+    <div class="faq-cat fi2">
+      <div class="faq-cat-title" data-fr="EXPOSANTS & COMMANDITAIRES" data-en="EXHIBITORS & SPONSORS">EXPOSANTS & COMMANDITAIRES</div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Comment devenir exposant ? <span class='faq-arrow'>▾</span>" data-en="How do I become an exhibitor? <span class='faq-arrow'>▾</span>">Comment devenir exposant ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Contactez-nous via la page Contact en sélectionnant 'Exposant / Commanditaire'. Notre équipe vous enverra le guide d'exposition avec les forfaits disponibles, les dimensions des stands et les modalités de paiement." data-en="Contact us via the Contact page by selecting 'Exhibitor / Sponsor'. Our team will send you the exhibitor guide with available packages, booth dimensions and payment terms.">Contactez-nous via la page Contact en sélectionnant 'Exposant / Commanditaire'. Notre équipe vous enverra le guide d'exposition.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Quel est l'achalandage prévu ? <span class='faq-arrow'>▾</span>" data-en="What is the expected attendance? <span class='faq-arrow'>▾</span>">Quel est l'achalandage prévu ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Nous prévoyons accueillir plus de 1 000 coureurs sur les deux jours, avec un profil de visiteurs hautement engagés — membres de clubs de course, coureurs passionnés et athlètes de tous niveaux." data-en="We expect to welcome over 1,000 runners over two days, with a highly engaged visitor profile — running club members, passionate runners and athletes of all levels.">Nous prévoyons accueillir plus de 1 000 coureurs sur les deux jours, avec un profil de visiteurs hautement engagés.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Quels types de commandites sont disponibles ? <span class='faq-arrow'>▾</span>" data-en="What types of sponsorships are available? <span class='faq-arrow'>▾</span>">Quels types de commandites sont disponibles ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Nous offrons plusieurs niveaux de commandite : Présentateur, Or, Argent et Bronze. Chaque niveau inclut différentes visibilités (logo, stand, mentions, réseaux sociaux). Contactez-nous pour recevoir notre guide de commandite détaillé." data-en="We offer several sponsorship levels: Presenting, Gold, Silver and Bronze. Each level includes different visibilities (logo, booth, mentions, social media). Contact us to receive our detailed sponsorship guide.">Nous offrons plusieurs niveaux de commandite : Présentateur, Or, Argent et Bronze.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Peut-on faire des démonstrations produits ? <span class='faq-arrow'>▾</span>" data-en="Can we do product demonstrations? <span class='faq-arrow'>▾</span>">Peut-on faire des démonstrations produits ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Absolument. La piste de course intérieure est accessible aux exposants pour des démonstrations de chaussures et équipements. Des créneaux de présentation sur la scène principale sont également disponibles selon votre forfait." data-en="Absolutely. The indoor running track is available to exhibitors for shoe and equipment demos. Presentation slots on the main stage are also available depending on your package.">Absolument. La piste de course intérieure est accessible aux exposants pour des démonstrations de chaussures et équipements.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Quelle est la date limite pour s'inscrire comme exposant ? <span class='faq-arrow'>▾</span>" data-en="What is the deadline to register as an exhibitor? <span class='faq-arrow'>▾</span>">Quelle est la date limite pour s'inscrire comme exposant ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Les inscriptions des exposants sont ouvertes jusqu'à 60 jours avant l'événement, sous réserve de disponibilité. Nous recommandons de contacter notre équipe le plus tôt possible car les espaces sont limités." data-en="Exhibitor registrations are open until 60 days before the event, subject to availability. We recommend contacting our team as early as possible as spaces are limited.">Les inscriptions des exposants sont ouvertes jusqu'à 60 jours avant l'événement, sous réserve de disponibilité.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="L'expo est-il bilingue ? <span class='faq-arrow'>▾</span>" data-en="Is the expo bilingual? <span class='faq-arrow'>▾</span>">L'expo est-il bilingue ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Oui, l'ensemble de l'événement est entièrement bilingue français-anglais. Toute la signalisation, les présentations, le matériel et les communications sont disponibles dans les deux langues." data-en="Yes, the entire event is fully bilingual French-English. All signage, presentations, materials and communications are available in both languages.">Oui, l'ensemble de l'événement est entièrement bilingue français-anglais.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" data-fr="Est-il possible de parrainer une zone spécifique ? <span class='faq-arrow'>▾</span>" data-en="Is it possible to sponsor a specific zone? <span class='faq-arrow'>▾</span>">Est-il possible de parrainer une zone spécifique ? <span class="faq-arrow">▾</span></div>
+        <div class="faq-a" data-fr="Oui, nous offrons des commandites de zones nommées (ex. : Zone Nutrition présentée par X). Ces partenariats incluent une visibilité exclusive dans la zone, des mentions sur nos plateformes et du contenu co-brandé. Contactez-nous pour en savoir plus." data-en="Yes, we offer named zone sponsorships (e.g., Nutrition Zone presented by X). These partnerships include exclusive visibility in the zone, mentions on our platforms and co-branded content. Contact us to learn more.">Oui, nous offrons des commandites de zones nommées. Ces partenariats incluent une visibilité exclusive dans la zone.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="faq-cta fi">
+    <div>
+      <div class="faq-cta-text" data-fr="Vous avez d'autres questions ?" data-en="Still have questions?">Vous avez d'autres questions ?</div>
+      <div class="faq-cta-sub" data-fr="Notre équipe répond dans les 48 heures." data-en="Our team responds within 48 hours.">Notre équipe répond dans les 48 heures.</div>
+    </div>
+    <a href="contact.html" class="btn-primary" data-fr="NOUS CONTACTER ↗" data-en="CONTACT US ↗">NOUS CONTACTER ↗</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo" data-fr="Expo Courir MTL" data-en="MTL Run Expo">Expo Courir MTL</div>
+      <div class="footer-tagline" data-fr="Toute la communauté de course de Montréal." data-en="The entire Montreal running community.">Toute la communauté de course de Montréal.</div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="NAVIGATION" data-en="NAVIGATION">NAVIGATION</div>
+      <div class="footer-links">
+        <a href="index.html" data-fr="Accueil" data-en="Home">Accueil</a>
+        <a href="programme.html" data-fr="Programme" data-en="Schedule">Programme</a>
+        <a href="about.html" data-fr="À Propos" data-en="About">À Propos</a>
+        <a href="volunteer.html" data-fr="Bénévoles" data-en="Volunteer">Bénévoles</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-fr="SUIVEZ-NOUS" data-en="FOLLOW US">SUIVEZ-NOUS</div>
+      <div class="footer-social">
+        <a href="#" class="social-btn">IG</a>
+        <a href="#" class="social-btn">FB</a>
+        <a href="#" class="social-btn">STR</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy" data-fr="© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS." data-en="© 2027 MTL RUN EXPO. ALL RIGHTS RESERVED.">© 2027 EXPO COURIR MTL. TOUS DROITS RÉSERVÉS.</div>
+    <div class="footer-copy">MONTRÉAL, QUÉBEC, CANADA</div>
+  </div>
+</footer>
+
+<script src="nav.js"></script>
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
